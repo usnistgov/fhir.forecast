@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="ASCII"?>
+<cdsi:CDSiPatient xmlns:cdsi="fhir.cdsi">
+  <gender value="male"/>
+  <birthDate value="2010-02-03"/>
+</cdsi:CDSiPatient>

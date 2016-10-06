@@ -1,0 +1,134 @@
+/**
+ */
+package fhir;
+
+
+/**
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>Naming System Unique Id</b></em>'.
+ * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * A curated namespace that issues unique symbols within that namespace for the identification of concepts, people, devices, etc.  Represents a "System" used within the Identifier and Coding data types.
+ * <!-- end-model-doc -->
+ *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link fhir.NamingSystemUniqueId#getType <em>Type</em>}</li>
+ *   <li>{@link fhir.NamingSystemUniqueId#getValue <em>Value</em>}</li>
+ *   <li>{@link fhir.NamingSystemUniqueId#getPreferred <em>Preferred</em>}</li>
+ *   <li>{@link fhir.NamingSystemUniqueId#getPeriod <em>Period</em>}</li>
+ * </ul>
+ *
+ * @see fhir.FhirPackage#getNamingSystemUniqueId()
+ * @model extendedMetaData="name='NamingSystem.UniqueId' kind='elementOnly'"
+ * @generated
+ */
+public interface NamingSystemUniqueId extends BackboneElement {
+	/**
+	 * Returns the value of the '<em><b>Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Identifies the unique identifier scheme used for this particular identifier.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Type</em>' containment reference.
+	 * @see #setType(NamingSystemIdentifierType)
+	 * @see fhir.FhirPackage#getNamingSystemUniqueId_Type()
+	 * @model containment="true" required="true"
+	 *        extendedMetaData="kind='element' name='type' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	NamingSystemIdentifierType getType();
+
+	/**
+	 * Sets the value of the '{@link fhir.NamingSystemUniqueId#getType <em>Type</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Type</em>' containment reference.
+	 * @see #getType()
+	 * @generated
+	 */
+	void setType(NamingSystemIdentifierType value);
+
+	/**
+	 * Returns the value of the '<em><b>Value</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The string that should be sent over the wire to identify the code system or identifier system.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Value</em>' containment reference.
+	 * @see #setValue(fhir.String)
+	 * @see fhir.FhirPackage#getNamingSystemUniqueId_Value()
+	 * @model containment="true" required="true"
+	 *        extendedMetaData="kind='element' name='value' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	fhir.String getValue();
+
+	/**
+	 * Sets the value of the '{@link fhir.NamingSystemUniqueId#getValue <em>Value</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Value</em>' containment reference.
+	 * @see #getValue()
+	 * @generated
+	 */
+	void setValue(fhir.String value);
+
+	/**
+	 * Returns the value of the '<em><b>Preferred</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Indicates whether this identifier is the "preferred" identifier of this type.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Preferred</em>' containment reference.
+	 * @see #setPreferred(fhir.Boolean)
+	 * @see fhir.FhirPackage#getNamingSystemUniqueId_Preferred()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='preferred' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	fhir.Boolean getPreferred();
+
+	/**
+	 * Sets the value of the '{@link fhir.NamingSystemUniqueId#getPreferred <em>Preferred</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Preferred</em>' containment reference.
+	 * @see #getPreferred()
+	 * @generated
+	 */
+	void setPreferred(fhir.Boolean value);
+
+	/**
+	 * Returns the value of the '<em><b>Period</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Identifies the period of time over which this identifier is considered appropriate to refer to the naming system.  Outside of this window, the identifier might be non-deterministic.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Period</em>' containment reference.
+	 * @see #setPeriod(Period)
+	 * @see fhir.FhirPackage#getNamingSystemUniqueId_Period()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='period' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Period getPeriod();
+
+	/**
+	 * Sets the value of the '{@link fhir.NamingSystemUniqueId#getPeriod <em>Period</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Period</em>' containment reference.
+	 * @see #getPeriod()
+	 * @generated
+	 */
+	void setPeriod(Period value);
+
+} // NamingSystemUniqueId

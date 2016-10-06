@@ -1,0 +1,98 @@
+/**
+ */
+package fhir;
+
+import org.eclipse.emf.common.util.EList;
+
+/**
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>Audit Event Source</b></em>'.
+ * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * A record of an event made for purposes of maintaining a security log. Typical uses include detection of intrusion attempts and monitoring for inappropriate usage.
+ * <!-- end-model-doc -->
+ *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link fhir.AuditEventSource#getSite <em>Site</em>}</li>
+ *   <li>{@link fhir.AuditEventSource#getIdentifier <em>Identifier</em>}</li>
+ *   <li>{@link fhir.AuditEventSource#getType <em>Type</em>}</li>
+ * </ul>
+ *
+ * @see fhir.FhirPackage#getAuditEventSource()
+ * @model extendedMetaData="name='AuditEvent.Source' kind='elementOnly'"
+ * @generated
+ */
+public interface AuditEventSource extends BackboneElement {
+	/**
+	 * Returns the value of the '<em><b>Site</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Logical source location within the healthcare enterprise network.  For example, a hospital or other provider location within a multi-entity provider group.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Site</em>' containment reference.
+	 * @see #setSite(fhir.String)
+	 * @see fhir.FhirPackage#getAuditEventSource_Site()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='site' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	fhir.String getSite();
+
+	/**
+	 * Sets the value of the '{@link fhir.AuditEventSource#getSite <em>Site</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Site</em>' containment reference.
+	 * @see #getSite()
+	 * @generated
+	 */
+	void setSite(fhir.String value);
+
+	/**
+	 * Returns the value of the '<em><b>Identifier</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Identifier of the source where the event was detected.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Identifier</em>' containment reference.
+	 * @see #setIdentifier(Identifier)
+	 * @see fhir.FhirPackage#getAuditEventSource_Identifier()
+	 * @model containment="true" required="true"
+	 *        extendedMetaData="kind='element' name='identifier' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Identifier getIdentifier();
+
+	/**
+	 * Sets the value of the '{@link fhir.AuditEventSource#getIdentifier <em>Identifier</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Identifier</em>' containment reference.
+	 * @see #getIdentifier()
+	 * @generated
+	 */
+	void setIdentifier(Identifier value);
+
+	/**
+	 * Returns the value of the '<em><b>Type</b></em>' containment reference list.
+	 * The list contents are of type {@link fhir.Coding}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Code specifying the type of source where event originated.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Type</em>' containment reference list.
+	 * @see fhir.FhirPackage#getAuditEventSource_Type()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='type' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	EList<Coding> getType();
+
+} // AuditEventSource

@@ -1,0 +1,115 @@
+/**
+ */
+package fhir;
+
+import org.eclipse.emf.common.util.EList;
+
+/**
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>Care Plan Activity</b></em>'.
+ * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * Describes the intention of how one or more practitioners intend to deliver care for a particular patient, group or community for a period of time, possibly limited to care for a specific condition or set of conditions.
+ * <!-- end-model-doc -->
+ *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link fhir.CarePlanActivity#getActionResulting <em>Action Resulting</em>}</li>
+ *   <li>{@link fhir.CarePlanActivity#getProgress <em>Progress</em>}</li>
+ *   <li>{@link fhir.CarePlanActivity#getReference <em>Reference</em>}</li>
+ *   <li>{@link fhir.CarePlanActivity#getDetail <em>Detail</em>}</li>
+ * </ul>
+ *
+ * @see fhir.FhirPackage#getCarePlanActivity()
+ * @model extendedMetaData="name='CarePlan.Activity' kind='elementOnly'"
+ * @generated
+ */
+public interface CarePlanActivity extends BackboneElement {
+	/**
+	 * Returns the value of the '<em><b>Action Resulting</b></em>' containment reference list.
+	 * The list contents are of type {@link fhir.Reference}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Resources that describe follow-on actions resulting from the plan, such as drug prescriptions, encounter records, appointments, etc.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Action Resulting</em>' containment reference list.
+	 * @see fhir.FhirPackage#getCarePlanActivity_ActionResulting()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='actionResulting' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	EList<Reference> getActionResulting();
+
+	/**
+	 * Returns the value of the '<em><b>Progress</b></em>' containment reference list.
+	 * The list contents are of type {@link fhir.Annotation}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Notes about the adherence/status/progress of the activity.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Progress</em>' containment reference list.
+	 * @see fhir.FhirPackage#getCarePlanActivity_Progress()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='progress' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	EList<Annotation> getProgress();
+
+	/**
+	 * Returns the value of the '<em><b>Reference</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * The details of the proposed activity represented in a specific resource.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Reference</em>' containment reference.
+	 * @see #setReference(Reference)
+	 * @see fhir.FhirPackage#getCarePlanActivity_Reference()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='reference' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Reference getReference();
+
+	/**
+	 * Sets the value of the '{@link fhir.CarePlanActivity#getReference <em>Reference</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Reference</em>' containment reference.
+	 * @see #getReference()
+	 * @generated
+	 */
+	void setReference(Reference value);
+
+	/**
+	 * Returns the value of the '<em><b>Detail</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A simple summary of a planned activity suitable for a general care plan system (e.g. form driven) that doesn't know about specific resources such as procedure etc.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Detail</em>' containment reference.
+	 * @see #setDetail(CarePlanDetail)
+	 * @see fhir.FhirPackage#getCarePlanActivity_Detail()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='detail' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	CarePlanDetail getDetail();
+
+	/**
+	 * Sets the value of the '{@link fhir.CarePlanActivity#getDetail <em>Detail</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Detail</em>' containment reference.
+	 * @see #getDetail()
+	 * @generated
+	 */
+	void setDetail(CarePlanDetail value);
+
+} // CarePlanActivity

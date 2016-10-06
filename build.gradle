@@ -1,0 +1,65 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'maven'
+
+sourceCompatibility = 1.8
+version = '1.2'
+
+group 'gov.nist.fhir.forecast'
+
+jar {
+    manifest {
+        attributes 'Implementation-Title': 'Forecast FHIR Model',
+                   'Implementation-Version': version
+    }
+}
+
+repositories {
+	maven {url 'file://' + new File(System.getProperty('user.home'), '.m2/repository').absolutePath;}
+	maven {url 'http://repo1.maven.org/maven2'}
+}
+
+dependencies {
+
+	// EMF
+	compile 'org.eclipse.emf:org.eclipse.emf:2.6.0'
+	compile 'org.eclipse.emf:org.eclipse.emf.common:2.12.0'
+	compile 'org.eclipse.emf:org.eclipse.emf.ecore:2.12.0'
+	compile 'org.eclipse.emf:org.eclipse.emf.ecore.xmi:2.12.0'
+	
+	// Logging
+	compile 'org.slf4j:slf4j-api:1.7.21'
+	compile 'ch.qos.logback:logback-core:1.1.7'
+	compile 'ch.qos.logback:logback-classic:1.1.7'
+	
+	compile 'org.tch.fc:ForecastConnector:3.09'
+	
+    testCompile group: 'junit', name: 'junit', version: '4.+'
+}
+		
+
+test {
+    systemProperties 'property': 'value'
+}
+
+sourceSets {
+    main {
+    	java {
+    		srcDir 'gen/main/java'
+    	}
+    }
+}
+
+processResources {
+  from ('gen/main/java') {
+     include '**/*.ecore'
+  }
+}
+
+uploadArchives {
+    repositories {
+       flatDir {
+           dirs 'repos'
+       }
+    }
+}

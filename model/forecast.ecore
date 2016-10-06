@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="forecast" nsURI="fhir.forecast" nsPrefix="forecast">
+  <eClassifiers xsi:type="ecore:EClass" name="ForecastImmunizationRecomendation" eSuperTypes="fhir.ecore#//ImmunizationRecommendation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ForecastImmunizationRecommendationRecommendation"
+      eSuperTypes="fhir.ecore#//ImmunizationRecommendationRecommendation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ForecastPatient" eSuperTypes="fhir.ecore#//Patient"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ForecastImmunization" eSuperTypes="fhir.ecore#//Immunization"/>
+</ecore:EPackage>

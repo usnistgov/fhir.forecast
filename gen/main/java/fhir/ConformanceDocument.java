@@ -1,0 +1,107 @@
+/**
+ */
+package fhir;
+
+
+/**
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>Conformance Document</b></em>'.
+ * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * A conformance statement is a set of capabilities of a FHIR Server that may be used as a statement of actual server functionality or a statement of required or desired server implementation.
+ * <!-- end-model-doc -->
+ *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link fhir.ConformanceDocument#getMode <em>Mode</em>}</li>
+ *   <li>{@link fhir.ConformanceDocument#getDocumentation <em>Documentation</em>}</li>
+ *   <li>{@link fhir.ConformanceDocument#getProfile <em>Profile</em>}</li>
+ * </ul>
+ *
+ * @see fhir.FhirPackage#getConformanceDocument()
+ * @model extendedMetaData="name='Conformance.Document' kind='elementOnly'"
+ * @generated
+ */
+public interface ConformanceDocument extends BackboneElement {
+	/**
+	 * Returns the value of the '<em><b>Mode</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Mode of this document declaration - whether application is producer or consumer.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Mode</em>' containment reference.
+	 * @see #setMode(DocumentMode)
+	 * @see fhir.FhirPackage#getConformanceDocument_Mode()
+	 * @model containment="true" required="true"
+	 *        extendedMetaData="kind='element' name='mode' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	DocumentMode getMode();
+
+	/**
+	 * Sets the value of the '{@link fhir.ConformanceDocument#getMode <em>Mode</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Mode</em>' containment reference.
+	 * @see #getMode()
+	 * @generated
+	 */
+	void setMode(DocumentMode value);
+
+	/**
+	 * Returns the value of the '<em><b>Documentation</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A description of how the application supports or uses the specified document profile.  For example, when are documents created, what action is taken with consumed documents, etc.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Documentation</em>' containment reference.
+	 * @see #setDocumentation(fhir.String)
+	 * @see fhir.FhirPackage#getConformanceDocument_Documentation()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='documentation' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	fhir.String getDocumentation();
+
+	/**
+	 * Sets the value of the '{@link fhir.ConformanceDocument#getDocumentation <em>Documentation</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Documentation</em>' containment reference.
+	 * @see #getDocumentation()
+	 * @generated
+	 */
+	void setDocumentation(fhir.String value);
+
+	/**
+	 * Returns the value of the '<em><b>Profile</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A constraint on a resource used in the document.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Profile</em>' containment reference.
+	 * @see #setProfile(Reference)
+	 * @see fhir.FhirPackage#getConformanceDocument_Profile()
+	 * @model containment="true" required="true"
+	 *        extendedMetaData="kind='element' name='profile' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Reference getProfile();
+
+	/**
+	 * Sets the value of the '{@link fhir.ConformanceDocument#getProfile <em>Profile</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Profile</em>' containment reference.
+	 * @see #getProfile()
+	 * @generated
+	 */
+	void setProfile(Reference value);
+
+} // ConformanceDocument

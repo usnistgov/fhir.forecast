@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <meta>
+    <lastUpdated value="2016-08-31T15:20:17.965-04:00" />
+  </meta>
+  <url value="StructureDefinition/ForecastPatient" />
+  <version value="0.0" />
+  <name value="ForecastPatient" />
+  <display value="Forecast Profile" />
+  <status value="draft" />
+  <experimental value="true" />
+  <publisher value="AIRA/NIST" />
+  <date value="2016-08-31T00:00:00-04:00" />
+  <fhirVersion value="1.0.2" />
+  <kind value="resource" />
+  <constrainedType value="Patient" />
+  <abstract value="false" />
+  <base value="http://hl7.org/fhir/StructureDefinition/Patient" />
+  <differential>
+    <element>
+      <path value="Patient" />
+      <type>
+        <code value="Patient" />
+      </type>
+    </element>
+    <element>
+      <path value="Patient.name" />
+      <slicing>
+        <rules value="openAtEnd" />
+      </slicing>
+      <max value="0" />
+    </element>
+    <element>
+      <path value="Patient.telecom" />
+      <max value="0" />
+    </element>
+    <element>
+      <path value="Patient.gender" />
+      <min value="1" />
+    </element>
+    <element>
+      <path value="Patient.birthDate" />
+      <min value="1" />
+    </element>
+    <element>
+      <path value="Patient.deceased[x]" />
+      <max value="0" />
+    </element>
+    <element>
+      <path value="Patient.address" />
+      <max value="0" />
+    </element>
+    <element>
+      <path value="Patient.maritalStatus" />
+      <max value="0" />
+    </element>
+    <element>
+      <path value="Patient.multipleBirth[x]" />
+      <max value="0" />
+    </element>
+    <element>
+      <path value="Patient.photo" />
+      <max value="0" />
+    </element>
+    <element>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name">
+        <valueString value="Contact" />
+      </extension>
+      <path value="Patient.contact" />
+      <max value="0" />
+    </element>
+    <element>
+      <extension url="http://hl7.org/fhir/StructureDefinition/structuredefinition-explicit-type-name">
+        <valueString value="Animal" />
+      </extension>
+      <path value="Patient.animal" />
+      <max value="0" />
+    </element>
+    <element>
+      <path value="Patient.communication" />
+      <max value="0" />
+    </element>
+    <element>
+      <path value="Patient.careProvider" />
+      <max value="0" />
+    </element>
+    <element>
+      <path value="Patient.managingOrganization" />
+      <max value="0" />
+    </element>
+    <element>
+      <path value="Patient.link" />
+      <max value="0" />
+    </element>
+  </differential>
+  <snapshot>
+    <element>
+      <path value="Patient" />
+      <type>
+        <code value="Patient" />
+      </type>
+    </element>
+    <element>
+      <path value="Patient.gender" />
+      <min value="1" />
+    </element>
+    <element>
+      <path value="Patient.birthDate" />
+      <min value="1" />
+    </element>
+  </snapshot>
+</StructureDefinition>

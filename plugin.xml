@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated cdsi -->
+      <package
+            uri="fhir.cdsi"
+            class="cdsi.CdsiPackage"
+            genModel="model/forecast.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated forecast -->
+      <package
+            uri="fhir.forecast"
+            class="forecast.ForecastPackage"
+            genModel="model/forecast.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated cdsi -->
+      <package
+            uri="http://hl7.org/fhir"
+            class="fhir.FhirPackage"
+            genModel="model/forecast.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated cdsi -->
+      <parser
+            type="fhir"
+            class="fhir.util.FhirResourceFactoryImpl"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated cdsi -->
+      <package
+            uri="http://www.w3.org/1999/xhtml"
+            class="xhtml.XhtmlPackage"
+            genModel="model/forecast.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.extension_parser">
+      <!-- @generated cdsi -->
+      <parser
+            type="xhtml"
+            class="xhtml.util.XhtmlResourceFactoryImpl"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated cdsi -->
+      <package
+            uri="http://www.w3.org/XML/1998/namespace"
+            class="namespace.NamespacePackage"
+            genModel="model/forecast.genmodel"/>
+   </extension>
+
+</plugin>

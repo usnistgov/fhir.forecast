@@ -1,0 +1,134 @@
+/**
+ */
+package fhir;
+
+
+/**
+ * <!-- begin-user-doc -->
+ * A representation of the model object '<em><b>Test Script Variable</b></em>'.
+ * <!-- end-user-doc -->
+ *
+ * <!-- begin-model-doc -->
+ * TestScript is a resource that specifies a suite of tests against a FHIR server implementation to determine compliance against the FHIR specification.
+ * <!-- end-model-doc -->
+ *
+ * <p>
+ * The following features are supported:
+ * </p>
+ * <ul>
+ *   <li>{@link fhir.TestScriptVariable#getName <em>Name</em>}</li>
+ *   <li>{@link fhir.TestScriptVariable#getHeaderField <em>Header Field</em>}</li>
+ *   <li>{@link fhir.TestScriptVariable#getPath <em>Path</em>}</li>
+ *   <li>{@link fhir.TestScriptVariable#getSourceId <em>Source Id</em>}</li>
+ * </ul>
+ *
+ * @see fhir.FhirPackage#getTestScriptVariable()
+ * @model extendedMetaData="name='TestScript.Variable' kind='elementOnly'"
+ * @generated
+ */
+public interface TestScriptVariable extends BackboneElement {
+	/**
+	 * Returns the value of the '<em><b>Name</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Descriptive name for this variable.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Name</em>' containment reference.
+	 * @see #setName(fhir.String)
+	 * @see fhir.FhirPackage#getTestScriptVariable_Name()
+	 * @model containment="true" required="true"
+	 *        extendedMetaData="kind='element' name='name' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	fhir.String getName();
+
+	/**
+	 * Sets the value of the '{@link fhir.TestScriptVariable#getName <em>Name</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Name</em>' containment reference.
+	 * @see #getName()
+	 * @generated
+	 */
+	void setName(fhir.String value);
+
+	/**
+	 * Returns the value of the '<em><b>Header Field</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Will be used to grab the HTTP header field value from the headers that sourceId is pointing to.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Header Field</em>' containment reference.
+	 * @see #setHeaderField(fhir.String)
+	 * @see fhir.FhirPackage#getTestScriptVariable_HeaderField()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='headerField' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	fhir.String getHeaderField();
+
+	/**
+	 * Sets the value of the '{@link fhir.TestScriptVariable#getHeaderField <em>Header Field</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Header Field</em>' containment reference.
+	 * @see #getHeaderField()
+	 * @generated
+	 */
+	void setHeaderField(fhir.String value);
+
+	/**
+	 * Returns the value of the '<em><b>Path</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * XPath or JSONPath against the fixture body.  When variables are defined, either headerField must be specified or path, but not both.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Path</em>' containment reference.
+	 * @see #setPath(fhir.String)
+	 * @see fhir.FhirPackage#getTestScriptVariable_Path()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='path' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	fhir.String getPath();
+
+	/**
+	 * Sets the value of the '{@link fhir.TestScriptVariable#getPath <em>Path</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Path</em>' containment reference.
+	 * @see #getPath()
+	 * @generated
+	 */
+	void setPath(fhir.String value);
+
+	/**
+	 * Returns the value of the '<em><b>Source Id</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * Fixture to evaluate the XPath/JSONPath expression or the headerField  against within this variable.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Source Id</em>' containment reference.
+	 * @see #setSourceId(Id)
+	 * @see fhir.FhirPackage#getTestScriptVariable_SourceId()
+	 * @model containment="true"
+	 *        extendedMetaData="kind='element' name='sourceId' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	Id getSourceId();
+
+	/**
+	 * Sets the value of the '{@link fhir.TestScriptVariable#getSourceId <em>Source Id</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Source Id</em>' containment reference.
+	 * @see #getSourceId()
+	 * @generated
+	 */
+	void setSourceId(Id value);
+
+} // TestScriptVariable
