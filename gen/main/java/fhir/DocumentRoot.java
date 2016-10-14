@@ -66,6 +66,7 @@ import org.eclipse.emf.ecore.util.FeatureMap;
  *   <li>{@link fhir.DocumentRoot#getImagingStudy <em>Imaging Study</em>}</li>
  *   <li>{@link fhir.DocumentRoot#getImmunization <em>Immunization</em>}</li>
  *   <li>{@link fhir.DocumentRoot#getImmunizationRecommendation <em>Immunization Recommendation</em>}</li>
+ *   <li>{@link fhir.DocumentRoot#getImplementationGuide <em>Implementation Guide</em>}</li>
  *   <li>{@link fhir.DocumentRoot#getList <em>List</em>}</li>
  *   <li>{@link fhir.DocumentRoot#getLocation <em>Location</em>}</li>
  *   <li>{@link fhir.DocumentRoot#getMedia <em>Media</em>}</li>
@@ -1392,6 +1393,32 @@ public interface DocumentRoot extends EObject {
 	 * @generated
 	 */
 	void setImmunizationRecommendation(ImmunizationRecommendation value);
+
+	/**
+	 * Returns the value of the '<em><b>Implementation Guide</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * A set of rules or how FHIR is used to solve a particular problem. This resource is used to gather all the parts of an implementation guide into a logical whole, and to publish a computable definition of all the parts.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Implementation Guide</em>' containment reference.
+	 * @see #setImplementationGuide(ImplementationGuide)
+	 * @see fhir.FhirPackage#getDocumentRoot_ImplementationGuide()
+	 * @model containment="true" upper="-2" transient="true" volatile="true" derived="true"
+	 *        extendedMetaData="kind='element' name='ImplementationGuide' namespace='##targetNamespace'"
+	 * @generated
+	 */
+	ImplementationGuide getImplementationGuide();
+
+	/**
+	 * Sets the value of the '{@link fhir.DocumentRoot#getImplementationGuide <em>Implementation Guide</em>}' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Implementation Guide</em>' containment reference.
+	 * @see #getImplementationGuide()
+	 * @generated
+	 */
+	void setImplementationGuide(ImplementationGuide value);
 
 	/**
 	 * Returns the value of the '<em><b>List</b></em>' containment reference.

@@ -23,6 +23,8 @@ public abstract class FHIRUtil {
 	
 	private static Logger log = LoggerFactory.getLogger(FHIRUtil.class);
 	
+	public final static Id FHIR_VERSION = createFHIRVersion();
+	
 	public enum FORMAT {
 		JSON("json"), XML("xml");
 		
@@ -65,6 +67,13 @@ public abstract class FHIRUtil {
 		id.setValue(UUID.randomUUID().toString());
 		return id;
 	}
+	
+	public static Id createFHIRVersion() {
+		Id id = FhirFactory.eINSTANCE.createId();
+		id.setId(createId().getId());
+		id.setValue("STU3");
+		return id;
+	}
 
 	public static Identifier createIdentifier() {
 		Identifier identifier = FhirFactory.eINSTANCE.createIdentifier();
@@ -88,13 +97,8 @@ public abstract class FHIRUtil {
 	}
 
 	public static String createURN(String i) {
-		StringBuilder bld = new StringBuilder();
-		bld.append("urn");
-		bld.append(":");
-		bld.append("uuid");
-		bld.append(":");
-		bld.append(i.getValue());
-		return convert(bld.toString());
+		java.lang.String s = "urn:uuid:" + i.getValue();
+		return convert(s);
 	}
 
 	public static Date convert(java.util.Date i) {

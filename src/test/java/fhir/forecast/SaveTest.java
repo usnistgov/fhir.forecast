@@ -25,7 +25,7 @@ public class SaveTest {
 		Date birthDate = FhirFactory.eINSTANCE.createDate();
 		birthDate.setValue(xgc);
 		sut.setBirthDate(birthDate);
-		sut.setGender(ForecastUtil.convertGender("M"));
+		sut.setGender(ForecastUtil.createGender("M"));
 		
 		String s = Save.it(sut, "sut.xml");
 		

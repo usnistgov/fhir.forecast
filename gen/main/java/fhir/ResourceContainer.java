@@ -1411,31 +1411,31 @@ public interface ResourceContainer extends EObject {
 	void setImmunizationRecommendation(ImmunizationRecommendation value);
 
 	/**
-	 * Returns the value of the '<em><b>Implementation Guide</b></em>' attribute.
+	 * Returns the value of the '<em><b>Implementation Guide</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Implementation Guide</em>' attribute isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Implementation Guide</em>' attribute.
-	 * @see #setImplementationGuide(Object)
+	 * @return the value of the '<em>Implementation Guide</em>' containment reference.
+	 * @see #setImplementationGuide(ImplementationGuide)
 	 * @see fhir.FhirPackage#getResourceContainer_ImplementationGuide()
-	 * @model dataType="org.eclipse.emf.ecore.xml.type.AnySimpleType"
+	 * @model containment="true"
 	 *        extendedMetaData="kind='element' name='ImplementationGuide' namespace='##targetNamespace'"
 	 * @generated
 	 */
-	Object getImplementationGuide();
+	ImplementationGuide getImplementationGuide();
 
 	/**
-	 * Sets the value of the '{@link fhir.ResourceContainer#getImplementationGuide <em>Implementation Guide</em>}' attribute.
+	 * Sets the value of the '{@link fhir.ResourceContainer#getImplementationGuide <em>Implementation Guide</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Implementation Guide</em>' attribute.
+	 * @param value the new value of the '<em>Implementation Guide</em>' containment reference.
 	 * @see #getImplementationGuide()
 	 * @generated
 	 */
-	void setImplementationGuide(Object value);
+	void setImplementationGuide(ImplementationGuide value);
 
 	/**
 	 * Returns the value of the '<em><b>List</b></em>' containment reference.

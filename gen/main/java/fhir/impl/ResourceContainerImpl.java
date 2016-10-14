@@ -56,6 +56,7 @@ import fhir.ImagingObjectSelection;
 import fhir.ImagingStudy;
 import fhir.Immunization;
 import fhir.ImmunizationRecommendation;
+import fhir.ImplementationGuide;
 import fhir.List;
 import fhir.Location;
 import fhir.Media;
@@ -708,24 +709,14 @@ public class ResourceContainerImpl extends MinimalEObjectImpl.Container implemen
 	protected ImmunizationRecommendation immunizationRecommendation;
 
 	/**
-	 * The default value of the '{@link #getImplementationGuide() <em>Implementation Guide</em>}' attribute.
+	 * The cached value of the '{@link #getImplementationGuide() <em>Implementation Guide</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getImplementationGuide()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final Object IMPLEMENTATION_GUIDE_EDEFAULT = null;
-
-	/**
-	 * The cached value of the '{@link #getImplementationGuide() <em>Implementation Guide</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getImplementationGuide()
-	 * @generated
-	 * @ordered
-	 */
-	protected Object implementationGuide = IMPLEMENTATION_GUIDE_EDEFAULT;
+	protected ImplementationGuide implementationGuide;
 
 	/**
 	 * The cached value of the '{@link #getList() <em>List</em>}' containment reference.
@@ -3251,7 +3242,7 @@ public class ResourceContainerImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Object getImplementationGuide() {
+	public ImplementationGuide getImplementationGuide() {
 		return implementationGuide;
 	}
 
@@ -3260,11 +3251,33 @@ public class ResourceContainerImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setImplementationGuide(Object newImplementationGuide) {
-		Object oldImplementationGuide = implementationGuide;
+	public NotificationChain basicSetImplementationGuide(ImplementationGuide newImplementationGuide, NotificationChain msgs) {
+		ImplementationGuide oldImplementationGuide = implementationGuide;
 		implementationGuide = newImplementationGuide;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.RESOURCE_CONTAINER__IMPLEMENTATION_GUIDE, oldImplementationGuide, implementationGuide));
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, FhirPackage.RESOURCE_CONTAINER__IMPLEMENTATION_GUIDE, oldImplementationGuide, newImplementationGuide);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setImplementationGuide(ImplementationGuide newImplementationGuide) {
+		if (newImplementationGuide != implementationGuide) {
+			NotificationChain msgs = null;
+			if (implementationGuide != null)
+				msgs = ((InternalEObject)implementationGuide).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - FhirPackage.RESOURCE_CONTAINER__IMPLEMENTATION_GUIDE, null, msgs);
+			if (newImplementationGuide != null)
+				msgs = ((InternalEObject)newImplementationGuide).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - FhirPackage.RESOURCE_CONTAINER__IMPLEMENTATION_GUIDE, null, msgs);
+			msgs = basicSetImplementationGuide(newImplementationGuide, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, FhirPackage.RESOURCE_CONTAINER__IMPLEMENTATION_GUIDE, newImplementationGuide, newImplementationGuide));
 	}
 
 	/**
@@ -5236,6 +5249,8 @@ public class ResourceContainerImpl extends MinimalEObjectImpl.Container implemen
 				return basicSetImmunization(null, msgs);
 			case FhirPackage.RESOURCE_CONTAINER__IMMUNIZATION_RECOMMENDATION:
 				return basicSetImmunizationRecommendation(null, msgs);
+			case FhirPackage.RESOURCE_CONTAINER__IMPLEMENTATION_GUIDE:
+				return basicSetImplementationGuide(null, msgs);
 			case FhirPackage.RESOURCE_CONTAINER__LIST:
 				return basicSetList(null, msgs);
 			case FhirPackage.RESOURCE_CONTAINER__LOCATION:
@@ -5677,7 +5692,7 @@ public class ResourceContainerImpl extends MinimalEObjectImpl.Container implemen
 				setImmunizationRecommendation((ImmunizationRecommendation)newValue);
 				return;
 			case FhirPackage.RESOURCE_CONTAINER__IMPLEMENTATION_GUIDE:
-				setImplementationGuide(newValue);
+				setImplementationGuide((ImplementationGuide)newValue);
 				return;
 			case FhirPackage.RESOURCE_CONTAINER__LIST:
 				setList((List)newValue);
@@ -5971,7 +5986,7 @@ public class ResourceContainerImpl extends MinimalEObjectImpl.Container implemen
 				setImmunizationRecommendation((ImmunizationRecommendation)null);
 				return;
 			case FhirPackage.RESOURCE_CONTAINER__IMPLEMENTATION_GUIDE:
-				setImplementationGuide(IMPLEMENTATION_GUIDE_EDEFAULT);
+				setImplementationGuide((ImplementationGuide)null);
 				return;
 			case FhirPackage.RESOURCE_CONTAINER__LIST:
 				setList((List)null);
@@ -6217,7 +6232,7 @@ public class ResourceContainerImpl extends MinimalEObjectImpl.Container implemen
 			case FhirPackage.RESOURCE_CONTAINER__IMMUNIZATION_RECOMMENDATION:
 				return immunizationRecommendation != null;
 			case FhirPackage.RESOURCE_CONTAINER__IMPLEMENTATION_GUIDE:
-				return IMPLEMENTATION_GUIDE_EDEFAULT == null ? implementationGuide != null : !IMPLEMENTATION_GUIDE_EDEFAULT.equals(implementationGuide);
+				return implementationGuide != null;
 			case FhirPackage.RESOURCE_CONTAINER__LIST:
 				return list != null;
 			case FhirPackage.RESOURCE_CONTAINER__LOCATION:
@@ -6326,8 +6341,6 @@ public class ResourceContainerImpl extends MinimalEObjectImpl.Container implemen
 		result.append(account);
 		result.append(", detectedIssue: ");
 		result.append(detectedIssue);
-		result.append(", implementationGuide: ");
-		result.append(implementationGuide);
 		result.append(", medicationOrder: ");
 		result.append(medicationOrder);
 		result.append(", questionnaireResponse: ");

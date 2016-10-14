@@ -513,6 +513,28 @@
       <genEnumLiterals ecoreEnumLiteral="fhir.ecore#//GroupTypeList/medication"/>
       <genEnumLiterals ecoreEnumLiteral="fhir.ecore#//GroupTypeList/substance"/>
     </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="fhir.ecore#//GuideDependencyTypeList">
+      <genEnumLiterals ecoreEnumLiteral="fhir.ecore#//GuideDependencyTypeList/reference"/>
+      <genEnumLiterals ecoreEnumLiteral="fhir.ecore#//GuideDependencyTypeList/inclusion"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="fhir.ecore#//GuidePageKindList">
+      <genEnumLiterals ecoreEnumLiteral="fhir.ecore#//GuidePageKindList/page"/>
+      <genEnumLiterals ecoreEnumLiteral="fhir.ecore#//GuidePageKindList/example"/>
+      <genEnumLiterals ecoreEnumLiteral="fhir.ecore#//GuidePageKindList/list"/>
+      <genEnumLiterals ecoreEnumLiteral="fhir.ecore#//GuidePageKindList/include"/>
+      <genEnumLiterals ecoreEnumLiteral="fhir.ecore#//GuidePageKindList/directory"/>
+      <genEnumLiterals ecoreEnumLiteral="fhir.ecore#//GuidePageKindList/dictionary"/>
+      <genEnumLiterals ecoreEnumLiteral="fhir.ecore#//GuidePageKindList/toc"/>
+      <genEnumLiterals ecoreEnumLiteral="fhir.ecore#//GuidePageKindList/resource"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="fhir.ecore#//GuideResourcePurposeList">
+      <genEnumLiterals ecoreEnumLiteral="fhir.ecore#//GuideResourcePurposeList/example"/>
+      <genEnumLiterals ecoreEnumLiteral="fhir.ecore#//GuideResourcePurposeList/terminology"/>
+      <genEnumLiterals ecoreEnumLiteral="fhir.ecore#//GuideResourcePurposeList/profile"/>
+      <genEnumLiterals ecoreEnumLiteral="fhir.ecore#//GuideResourcePurposeList/extension"/>
+      <genEnumLiterals ecoreEnumLiteral="fhir.ecore#//GuideResourcePurposeList/dictionary"/>
+      <genEnumLiterals ecoreEnumLiteral="fhir.ecore#//GuideResourcePurposeList/logical"/>
+    </genEnums>
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="fhir.ecore#//HTTPVerbList">
       <genEnumLiterals ecoreEnumLiteral="fhir.ecore#//HTTPVerbList/GET"/>
       <genEnumLiterals ecoreEnumLiteral="fhir.ecore#//HTTPVerbList/POST"/>
@@ -1040,6 +1062,9 @@
     <genDataTypes ecoreDataType="fhir.ecore#//FlagStatusListObject"/>
     <genDataTypes ecoreDataType="fhir.ecore#//GoalStatusListObject"/>
     <genDataTypes ecoreDataType="fhir.ecore#//GroupTypeListObject"/>
+    <genDataTypes ecoreDataType="fhir.ecore#//GuideDependencyTypeListObject"/>
+    <genDataTypes ecoreDataType="fhir.ecore#//GuidePageKindListObject"/>
+    <genDataTypes ecoreDataType="fhir.ecore#//GuideResourcePurposeListObject"/>
     <genDataTypes ecoreDataType="fhir.ecore#//HTTPVerbListObject"/>
     <genDataTypes ecoreDataType="fhir.ecore#//IdentifierUseListObject"/>
     <genDataTypes ecoreDataType="fhir.ecore#//IdentityAssuranceLevelListObject"/>
@@ -2477,6 +2502,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//DocumentRoot/imagingStudy"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//DocumentRoot/immunization"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//DocumentRoot/immunizationRecommendation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//DocumentRoot/implementationGuide"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//DocumentRoot/list"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//DocumentRoot/location"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//DocumentRoot/media"/>
@@ -3085,6 +3111,15 @@
     <genClasses ecoreClass="fhir.ecore#//GroupType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fhir.ecore#//GroupType/value"/>
     </genClasses>
+    <genClasses ecoreClass="fhir.ecore#//GuideDependencyType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fhir.ecore#//GuideDependencyType/value"/>
+    </genClasses>
+    <genClasses ecoreClass="fhir.ecore#//GuidePageKind">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fhir.ecore#//GuidePageKind/value"/>
+    </genClasses>
+    <genClasses ecoreClass="fhir.ecore#//GuideResourcePurpose">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fhir.ecore#//GuideResourcePurpose/value"/>
+    </genClasses>
     <genClasses ecoreClass="fhir.ecore#//HealthcareService">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//HealthcareService/identifier"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//HealthcareService/providedBy"/>
@@ -3287,6 +3322,60 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImmunizationVaccinationProtocol/targetDisease"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImmunizationVaccinationProtocol/doseStatus"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImmunizationVaccinationProtocol/doseStatusReason"/>
+    </genClasses>
+    <genClasses ecoreClass="fhir.ecore#//ImplementationGuide">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuide/url"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuide/version"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuide/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuide/status"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuide/experimental"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuide/publisher"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuide/contact"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuide/date"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuide/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuide/useContext"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuide/copyright"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuide/fhirVersion"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuide/dependency"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuide/package"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuide/global"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuide/binary"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuide/page"/>
+    </genClasses>
+    <genClasses ecoreClass="fhir.ecore#//ImplementationGuideContact">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuideContact/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuideContact/telecom"/>
+    </genClasses>
+    <genClasses ecoreClass="fhir.ecore#//ImplementationGuideDependency">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuideDependency/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuideDependency/uri"/>
+    </genClasses>
+    <genClasses ecoreClass="fhir.ecore#//ImplementationGuideGlobal">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuideGlobal/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuideGlobal/profile"/>
+    </genClasses>
+    <genClasses ecoreClass="fhir.ecore#//ImplementationGuidePackage">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuidePackage/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuidePackage/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuidePackage/resource"/>
+    </genClasses>
+    <genClasses ecoreClass="fhir.ecore#//ImplementationGuidePage">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuidePage/source"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuidePage/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuidePage/kind"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuidePage/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuidePage/package"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuidePage/format"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuidePage/page"/>
+    </genClasses>
+    <genClasses ecoreClass="fhir.ecore#//ImplementationGuideResource">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuideResource/purpose"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuideResource/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuideResource/description"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuideResource/acronym"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuideResource/sourceUri"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuideResource/sourceReference"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ImplementationGuideResource/exampleFor"/>
     </genClasses>
     <genClasses ecoreClass="fhir.ecore#//InstanceAvailability">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fhir.ecore#//InstanceAvailability/value"/>
@@ -4346,7 +4435,7 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ResourceContainer/imagingStudy"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ResourceContainer/immunization"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ResourceContainer/immunizationRecommendation"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute fhir.ecore#//ResourceContainer/implementationGuide"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EReference fhir.ecore#//ResourceContainer/implementationGuide"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ResourceContainer/list"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ResourceContainer/location"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference fhir.ecore#//ResourceContainer/media"/>

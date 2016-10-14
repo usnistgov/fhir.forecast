@@ -64,6 +64,7 @@ import fhir.ImagingObjectSelection;
 import fhir.ImagingStudy;
 import fhir.Immunization;
 import fhir.ImmunizationRecommendation;
+import fhir.ImplementationGuide;
 import fhir.List;
 import fhir.Location;
 import fhir.Media;
@@ -169,6 +170,7 @@ import java.lang.String;
  *   <li>{@link fhir.impl.DocumentRootImpl#getImagingStudy <em>Imaging Study</em>}</li>
  *   <li>{@link fhir.impl.DocumentRootImpl#getImmunization <em>Immunization</em>}</li>
  *   <li>{@link fhir.impl.DocumentRootImpl#getImmunizationRecommendation <em>Immunization Recommendation</em>}</li>
+ *   <li>{@link fhir.impl.DocumentRootImpl#getImplementationGuide <em>Implementation Guide</em>}</li>
  *   <li>{@link fhir.impl.DocumentRootImpl#getList <em>List</em>}</li>
  *   <li>{@link fhir.impl.DocumentRootImpl#getLocation <em>Location</em>}</li>
  *   <li>{@link fhir.impl.DocumentRootImpl#getMedia <em>Media</em>}</li>
@@ -1578,6 +1580,33 @@ public class DocumentRootImpl extends MinimalEObjectImpl.Container implements Do
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public ImplementationGuide getImplementationGuide() {
+		return (ImplementationGuide)getMixed().get(FhirPackage.eINSTANCE.getDocumentRoot_ImplementationGuide(), true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NotificationChain basicSetImplementationGuide(ImplementationGuide newImplementationGuide, NotificationChain msgs) {
+		return ((FeatureMap.Internal)getMixed()).basicAdd(FhirPackage.eINSTANCE.getDocumentRoot_ImplementationGuide(), newImplementationGuide, msgs);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setImplementationGuide(ImplementationGuide newImplementationGuide) {
+		((FeatureMap.Internal)getMixed()).set(FhirPackage.eINSTANCE.getDocumentRoot_ImplementationGuide(), newImplementationGuide);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public List getList() {
 		return (List)getMixed().get(FhirPackage.eINSTANCE.getDocumentRoot_List(), true);
 	}
@@ -2896,6 +2925,8 @@ public class DocumentRootImpl extends MinimalEObjectImpl.Container implements Do
 				return basicSetImmunization(null, msgs);
 			case FhirPackage.DOCUMENT_ROOT__IMMUNIZATION_RECOMMENDATION:
 				return basicSetImmunizationRecommendation(null, msgs);
+			case FhirPackage.DOCUMENT_ROOT__IMPLEMENTATION_GUIDE:
+				return basicSetImplementationGuide(null, msgs);
 			case FhirPackage.DOCUMENT_ROOT__LIST:
 				return basicSetList(null, msgs);
 			case FhirPackage.DOCUMENT_ROOT__LOCATION:
@@ -3101,6 +3132,8 @@ public class DocumentRootImpl extends MinimalEObjectImpl.Container implements Do
 				return getImmunization();
 			case FhirPackage.DOCUMENT_ROOT__IMMUNIZATION_RECOMMENDATION:
 				return getImmunizationRecommendation();
+			case FhirPackage.DOCUMENT_ROOT__IMPLEMENTATION_GUIDE:
+				return getImplementationGuide();
 			case FhirPackage.DOCUMENT_ROOT__LIST:
 				return getList();
 			case FhirPackage.DOCUMENT_ROOT__LOCATION:
@@ -3352,6 +3385,9 @@ public class DocumentRootImpl extends MinimalEObjectImpl.Container implements Do
 				return;
 			case FhirPackage.DOCUMENT_ROOT__IMMUNIZATION_RECOMMENDATION:
 				setImmunizationRecommendation((ImmunizationRecommendation)newValue);
+				return;
+			case FhirPackage.DOCUMENT_ROOT__IMPLEMENTATION_GUIDE:
+				setImplementationGuide((ImplementationGuide)newValue);
 				return;
 			case FhirPackage.DOCUMENT_ROOT__LIST:
 				setList((List)newValue);
@@ -3650,6 +3686,9 @@ public class DocumentRootImpl extends MinimalEObjectImpl.Container implements Do
 			case FhirPackage.DOCUMENT_ROOT__IMMUNIZATION_RECOMMENDATION:
 				setImmunizationRecommendation((ImmunizationRecommendation)null);
 				return;
+			case FhirPackage.DOCUMENT_ROOT__IMPLEMENTATION_GUIDE:
+				setImplementationGuide((ImplementationGuide)null);
+				return;
 			case FhirPackage.DOCUMENT_ROOT__LIST:
 				setList((List)null);
 				return;
@@ -3897,6 +3936,8 @@ public class DocumentRootImpl extends MinimalEObjectImpl.Container implements Do
 				return getImmunization() != null;
 			case FhirPackage.DOCUMENT_ROOT__IMMUNIZATION_RECOMMENDATION:
 				return getImmunizationRecommendation() != null;
+			case FhirPackage.DOCUMENT_ROOT__IMPLEMENTATION_GUIDE:
+				return getImplementationGuide() != null;
 			case FhirPackage.DOCUMENT_ROOT__LIST:
 				return getList() != null;
 			case FhirPackage.DOCUMENT_ROOT__LOCATION:

@@ -9931,6 +9931,15 @@
         <details key="namespace" value="##targetNamespace"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="implementationGuide" upperBound="-2"
+        eType="#//ImplementationGuide" volatile="true" transient="true" derived="true"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="ImplementationGuide"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="list" upperBound="-2" eType="#//List"
         volatile="true" transient="true" derived="true" containment="true" resolveProxies="false">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
@@ -14579,6 +14588,94 @@
       <details key="baseType" value="GroupType-list"/>
     </eAnnotations>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GuideDependencyType" eSuperTypes="#//Element">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="GuideDependencyType"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//GuideDependencyTypeList"
+        unsettable="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="value"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="GuideDependencyTypeList">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="GuideDependencyType-list"/>
+    </eAnnotations>
+    <eLiterals name="reference"/>
+    <eLiterals name="inclusion" value="1"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="GuideDependencyTypeListObject" instanceClassName="org.eclipse.emf.common.util.Enumerator">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="GuideDependencyType-list:Object"/>
+      <details key="baseType" value="GuideDependencyType-list"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GuidePageKind" eSuperTypes="#//Element">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="GuidePageKind"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//GuidePageKindList"
+        unsettable="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="value"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="GuidePageKindList">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="GuidePageKind-list"/>
+    </eAnnotations>
+    <eLiterals name="page"/>
+    <eLiterals name="example" value="1"/>
+    <eLiterals name="list" value="2"/>
+    <eLiterals name="include" value="3"/>
+    <eLiterals name="directory" value="4"/>
+    <eLiterals name="dictionary" value="5"/>
+    <eLiterals name="toc" value="6"/>
+    <eLiterals name="resource" value="7"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="GuidePageKindListObject" instanceClassName="org.eclipse.emf.common.util.Enumerator">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="GuidePageKind-list:Object"/>
+      <details key="baseType" value="GuidePageKind-list"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GuideResourcePurpose" eSuperTypes="#//Element">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="GuideResourcePurpose"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//GuideResourcePurposeList"
+        unsettable="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="value"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="GuideResourcePurposeList">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="GuideResourcePurpose-list"/>
+    </eAnnotations>
+    <eLiterals name="example"/>
+    <eLiterals name="terminology" value="1"/>
+    <eLiterals name="profile" value="2"/>
+    <eLiterals name="extension" value="3"/>
+    <eLiterals name="dictionary" value="4"/>
+    <eLiterals name="logical" value="5"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="GuideResourcePurposeListObject" instanceClassName="org.eclipse.emf.common.util.Enumerator">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="GuideResourcePurpose-list:Object"/>
+      <details key="baseType" value="GuideResourcePurpose-list"/>
+    </eAnnotations>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HealthcareService" eSuperTypes="#//DomainResource">
     <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
       <details key="name" value="HealthcareService"/>
@@ -15994,6 +16091,369 @@
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="doseStatusReason"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ImplementationGuide" eSuperTypes="#//DomainResource">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="ImplementationGuide"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="url" lowerBound="1" eType="#//Uri"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="url"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="version" eType="#//String"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="version"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="name" lowerBound="1" eType="#//String"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="name"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="status" lowerBound="1"
+        eType="#//Code" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="status"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="experimental" eType="#//Boolean"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="experimental"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="publisher" eType="#//String"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="publisher"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="contact" upperBound="-1"
+        eType="#//ImplementationGuideContact" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="contact"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="date" eType="#//DateTime"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="date"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="description" eType="#//String"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="description"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="useContext" upperBound="-1"
+        eType="#//CodeableConcept" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="useContext"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="copyright" eType="#//String"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="copyright"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fhirVersion" eType="#//Id"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="fhirVersion"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dependency" upperBound="-1"
+        eType="#//ImplementationGuideDependency" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="dependency"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="package" lowerBound="1"
+        upperBound="-1" eType="#//ImplementationGuidePackage" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="package"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="global" upperBound="-1"
+        eType="#//ImplementationGuideGlobal" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="global"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="binary" upperBound="-1"
+        eType="#//Uri" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="binary"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="page" lowerBound="1" eType="#//ImplementationGuidePage"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="page"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ImplementationGuideContact" eSuperTypes="#//BackboneElement">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="ImplementationGuide.Contact"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="#//String"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="name"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="telecom" upperBound="-1"
+        eType="#//ContactPoint" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="telecom"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ImplementationGuideDependency" eSuperTypes="#//BackboneElement">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="ImplementationGuide.Dependency"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//GuideDependencyType"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="type"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="uri" lowerBound="1" eType="#//Uri"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="uri"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ImplementationGuideGlobal" eSuperTypes="#//BackboneElement">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="ImplementationGuide.Global"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//Code"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="type"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="profile" lowerBound="1"
+        eType="#//Reference" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="profile"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ImplementationGuidePackage" eSuperTypes="#//BackboneElement">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="ImplementationGuide.Package"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="name" lowerBound="1" eType="#//String"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="name"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="description" eType="#//String"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="description"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resource" lowerBound="1"
+        upperBound="-1" eType="#//ImplementationGuideResource" containment="true"
+        resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="resource"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ImplementationGuidePage" eSuperTypes="#//BackboneElement">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="ImplementationGuide.Page"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
+        eType="#//Uri" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="source"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="name" lowerBound="1" eType="#//String"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="name"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="kind" lowerBound="1" eType="#//GuidePageKind"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="kind"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" upperBound="-1" eType="#//Code"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="type"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="package" upperBound="-1"
+        eType="#//String" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="package"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="format" eType="#//Code"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="format"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="page" upperBound="-1" eType="#//ImplementationGuidePage"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="page"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ImplementationGuideResource" eSuperTypes="#//BackboneElement">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="ImplementationGuide.Resource"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="purpose" lowerBound="1"
+        eType="#//GuideResourcePurpose" containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="purpose"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="#//String"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="name"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="description" eType="#//String"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="description"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="acronym" eType="#//String"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="acronym"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceUri" eType="#//Uri"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="sourceUri"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceReference" eType="#//Reference"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="sourceReference"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exampleFor" eType="#//Reference"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="exampleFor"/>
         <details key="namespace" value="##targetNamespace"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -23708,7 +24168,8 @@
         <details key="namespace" value="##targetNamespace"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="implementationGuide" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//AnySimpleType">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="implementationGuide" eType="#//ImplementationGuide"
+        containment="true" resolveProxies="false">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="ImplementationGuide"/>

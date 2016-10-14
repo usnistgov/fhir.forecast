@@ -14379,6 +14379,18 @@
         <details key="namespace" value="##targetNamespace"/>
       </eAnnotations>
     </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="implementationGuide" upperBound="-2"
+        eType="#//ImplementationGuide" volatile="true" transient="true" derived="true"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A set of rules or how FHIR is used to solve a particular problem. This resource is used to gather all the parts of an implementation guide into a logical whole, and to publish a computable definition of all the parts."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="ImplementationGuide"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
     <eStructuralFeatures xsi:type="ecore:EReference" name="list" upperBound="-2" eType="#//List"
         volatile="true" transient="true" derived="true" containment="true" resolveProxies="false">
       <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
@@ -20961,6 +20973,167 @@
       <details key="baseType" value="GroupType-list"/>
     </eAnnotations>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GuideDependencyType" eSuperTypes="#//Element">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="How a dependency is represented when the guide is published.&#xA;If the element is present, it must have either a @value, an @id, or extensions"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="GuideDependencyType"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//GuideDependencyTypeList"
+        unsettable="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="value"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="GuideDependencyTypeList">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="GuideDependencyType-list"/>
+    </eAnnotations>
+    <eLiterals name="reference">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The guide is referred to by URL."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="inclusion" value="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The guide is embedded in this guide when published."/>
+      </eAnnotations>
+    </eLiterals>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="GuideDependencyTypeListObject" instanceClassName="org.eclipse.emf.common.util.Enumerator">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="GuideDependencyType-list:Object"/>
+      <details key="baseType" value="GuideDependencyType-list"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GuidePageKind" eSuperTypes="#//Element">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="The kind of an included page.&#xA;If the element is present, it must have either a @value, an @id, or extensions"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="GuidePageKind"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//GuidePageKindList"
+        unsettable="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="value"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="GuidePageKindList">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="GuidePageKind-list"/>
+    </eAnnotations>
+    <eLiterals name="page">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="This is a page of content that is included in the implementation guide. It has no particular function."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="example" value="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="This is a page that represents a human readable rendering of an example."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="list" value="2">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="This is a page that represents a list of resources of one or more types."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="include" value="3">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="This is a page showing where an included guide is injected."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="directory" value="4">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="This is a page that lists the resources of a given type, and also creates pages for all the listed types as other pages in the section."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="dictionary" value="5">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="This is a page that creates the listed resources as a dictionary."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="toc" value="6">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="This is a generated page that contains the table of contents."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="resource" value="7">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="This is a page that represents a presented resource. This is typically used for generated conformance resource presentations."/>
+      </eAnnotations>
+    </eLiterals>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="GuidePageKindListObject" instanceClassName="org.eclipse.emf.common.util.Enumerator">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="GuidePageKind-list:Object"/>
+      <details key="baseType" value="GuidePageKind-list"/>
+    </eAnnotations>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GuideResourcePurpose" eSuperTypes="#//Element">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Why a resource is included in the guide.&#xA;If the element is present, it must have either a @value, an @id, or extensions"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="GuideResourcePurpose"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="#//GuideResourcePurposeList"
+        unsettable="true">
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="attribute"/>
+        <details key="name" value="value"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="GuideResourcePurposeList">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="GuideResourcePurpose-list"/>
+    </eAnnotations>
+    <eLiterals name="example">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The resource is intended as an example."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="terminology" value="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The resource defines a value set or concept map used in the implementation guide."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="profile" value="2">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The resource defines a profile (StructureDefinition) that is used in the implementation guide."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="extension" value="3">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The resource defines an extension (StructureDefinition) that is used in the implementation guide."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="dictionary" value="4">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The resource contains a dictionary that is part of the implementation guide."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="logical" value="5">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The resource defines a logical model (in a StructureDefinition) that is used in the implementation guide."/>
+      </eAnnotations>
+    </eLiterals>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EDataType" name="GuideResourcePurposeListObject" instanceClassName="org.eclipse.emf.common.util.Enumerator">
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="GuideResourcePurpose-list:Object"/>
+      <details key="baseType" value="GuideResourcePurpose-list"/>
+    </eAnnotations>
+  </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="HealthcareService" eSuperTypes="#//DomainResource">
     <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
       <details key="documentation" value="The details of a healthcare service available at a location.&#xA;If the element is present, it must have either a @value, an @id, or extensions"/>
@@ -22943,6 +23116,510 @@
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="doseStatusReason"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ImplementationGuide" eSuperTypes="#//DomainResource">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A set of rules or how FHIR is used to solve a particular problem. This resource is used to gather all the parts of an implementation guide into a logical whole, and to publish a computable definition of all the parts.&#xA;If the element is present, it must have either a @value, an @id, or extensions"/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="ImplementationGuide"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="url" lowerBound="1" eType="#//Uri"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="An absolute URL that is used to identify this implementation guide when it is referenced in a specification, model, design or an instance. This SHALL be a URL, SHOULD be globally unique, and SHOULD be an address at which this implementation guide is (or will be) published."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="url"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="version" eType="#//String"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The identifier that is used to identify this version of the Implementation Guide when it is referenced in a specification, model, design or instance. This is an arbitrary value managed by the Implementation Guide author manually."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="version"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="name" lowerBound="1" eType="#//String"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A free text natural language name identifying the Implementation Guide."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="name"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="status" lowerBound="1"
+        eType="#//Code" containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The status of the Implementation Guide."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="status"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="experimental" eType="#//Boolean"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="This Implementation Guide was authored for testing purposes (or education/evaluation/marketing), and is not intended to be used for genuine usage."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="experimental"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="publisher" eType="#//String"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The name of the individual or organization that published the implementation guide."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="publisher"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="contact" upperBound="-1"
+        eType="#//ImplementationGuideContact" containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Contacts to assist a user in finding and communicating with the publisher."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="contact"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="date" eType="#//DateTime"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The date this version of the implementation guide was published. The date must change when the business version changes, if it does, and it must change if the status code changes. In addition, it should change when the substantive content of the implementation guide changes."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="date"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="description" eType="#//String"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A free text natural language description of the Implementation Guide and its use."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="description"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="useContext" upperBound="-1"
+        eType="#//CodeableConcept" containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The content was developed with a focus and intent of supporting the contexts that are listed. These terms may be used to assist with indexing and searching of implementation guides. The most common use of this element is to represent the country / jurisdiction for which this implementation guide was defined."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="useContext"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="copyright" eType="#//String"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A copyright statement relating to the implementation guide and/or its contents. Copyright statements are generally legal restrictions on the use and publishing of the details of the constraints and mappings."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="copyright"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="fhirVersion" eType="#//Id"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The version of the FHIR specification on which this ImplementationGuide is based - this is the formal version of the specification, without the revision number, e.g. [publication].[major].[minor], which is 1.0.2 for this version."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="fhirVersion"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dependency" upperBound="-1"
+        eType="#//ImplementationGuideDependency" containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Another implementation guide that this implementation depends on. Typically, an implementation guide uses value sets, profiles etc.defined in other implementation guides."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="dependency"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="package" lowerBound="1"
+        upperBound="-1" eType="#//ImplementationGuidePackage" containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A logical group of resources. Logical groups can be used when building pages."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="package"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="global" upperBound="-1"
+        eType="#//ImplementationGuideGlobal" containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A set of profiles that all resources covered by this implementation guide must conform to."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="global"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="binary" upperBound="-1"
+        eType="#//Uri" containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A binary file that is included in the  implementation guide when it is published."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="binary"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="page" lowerBound="1" eType="#//ImplementationGuidePage"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A page / section in the implementation guide. The root page is the implementation guide home page."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="page"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ImplementationGuideContact" eSuperTypes="#//BackboneElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A set of rules or how FHIR is used to solve a particular problem. This resource is used to gather all the parts of an implementation guide into a logical whole, and to publish a computable definition of all the parts."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="ImplementationGuide.Contact"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="#//String"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The name of an individual to contact regarding the implementation guide."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="name"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="telecom" upperBound="-1"
+        eType="#//ContactPoint" containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Contact details for individual (if a name was provided) or the publisher."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="telecom"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ImplementationGuideDependency" eSuperTypes="#//BackboneElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A set of rules or how FHIR is used to solve a particular problem. This resource is used to gather all the parts of an implementation guide into a logical whole, and to publish a computable definition of all the parts."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="ImplementationGuide.Dependency"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//GuideDependencyType"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="How the dependency is represented when the guide is published."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="type"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="uri" lowerBound="1" eType="#//Uri"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Where the dependency is located."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="uri"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ImplementationGuideGlobal" eSuperTypes="#//BackboneElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A set of rules or how FHIR is used to solve a particular problem. This resource is used to gather all the parts of an implementation guide into a logical whole, and to publish a computable definition of all the parts."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="ImplementationGuide.Global"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="#//Code"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The type of resource that all instances must conform to."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="type"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="profile" lowerBound="1"
+        eType="#//Reference" containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A reference to the profile that all instances must conform to."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="profile"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ImplementationGuidePackage" eSuperTypes="#//BackboneElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A set of rules or how FHIR is used to solve a particular problem. This resource is used to gather all the parts of an implementation guide into a logical whole, and to publish a computable definition of all the parts."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="ImplementationGuide.Package"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="name" lowerBound="1" eType="#//String"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The name for the group, as used in page.package."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="name"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="description" eType="#//String"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Human readable text describing the package."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="description"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resource" lowerBound="1"
+        upperBound="-1" eType="#//ImplementationGuideResource" containment="true"
+        resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A resource that is part of the implementation guide. Conformance resources (value set, structure definition, conformance statements etc.) are obvious candidates for inclusion, but any kind of resource can be included as an example resource."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="resource"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ImplementationGuidePage" eSuperTypes="#//BackboneElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A set of rules or how FHIR is used to solve a particular problem. This resource is used to gather all the parts of an implementation guide into a logical whole, and to publish a computable definition of all the parts."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="ImplementationGuide.Page"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="source" lowerBound="1"
+        eType="#//Uri" containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The source address for the page."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="source"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="name" lowerBound="1" eType="#//String"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A short name used to represent this page in navigational structures such as table of contents, bread crumbs, etc."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="name"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="kind" lowerBound="1" eType="#//GuidePageKind"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The kind of page that this is. Some pages are autogenerated (list, example), and other kinds are of interest so that tools can navigate the user to the page of interest."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="kind"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" upperBound="-1" eType="#//Code"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="For constructed pages, what kind of resources to include in the list."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="type"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="package" upperBound="-1"
+        eType="#//String" containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="For constructed pages, a list of packages to include in the page (or else empty for everything)."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="package"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="format" eType="#//Code"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The format of the page."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="format"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="page" upperBound="-1" eType="#//ImplementationGuidePage"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Nested Pages/Sections under this page."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="page"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ImplementationGuideResource" eSuperTypes="#//BackboneElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A set of rules or how FHIR is used to solve a particular problem. This resource is used to gather all the parts of an implementation guide into a logical whole, and to publish a computable definition of all the parts."/>
+    </eAnnotations>
+    <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+      <details key="name" value="ImplementationGuide.Resource"/>
+      <details key="kind" value="elementOnly"/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="purpose" lowerBound="1"
+        eType="#//GuideResourcePurpose" containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Why the resource is included in the guide."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="purpose"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="#//String"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A human assigned name for the resource. All resources SHOULD have a name, but the name may be extracted from the resource (e.g. ValueSet.name)."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="name"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="description" eType="#//String"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A description of the reason that a resource has been included in the implementation guide."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="description"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="acronym" eType="#//String"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A short code that may be used to identify the resource throughout the implementation guide."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="acronym"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceUri" eType="#//Uri"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Where this resource is found. (choose any one of source*, but only one)"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="sourceUri"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceReference" eType="#//Reference"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Where this resource is found. (choose any one of source*, but only one)"/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="sourceReference"/>
+        <details key="namespace" value="##targetNamespace"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exampleFor" eType="#//Reference"
+        containment="true" resolveProxies="false">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Another resource that this resource is an example for. This is mostly used for resources that are included as examples of StructureDefinitions."/>
+      </eAnnotations>
+      <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
+        <details key="kind" value="element"/>
+        <details key="name" value="exampleFor"/>
         <details key="namespace" value="##targetNamespace"/>
       </eAnnotations>
     </eStructuralFeatures>
@@ -33925,7 +34602,8 @@
         <details key="namespace" value="##targetNamespace"/>
       </eAnnotations>
     </eStructuralFeatures>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="implementationGuide" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//AnySimpleType">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="implementationGuide" eType="#//ImplementationGuide"
+        containment="true" resolveProxies="false">
       <eAnnotations source="http:///org/eclipse/emf/ecore/util/ExtendedMetaData">
         <details key="kind" value="element"/>
         <details key="name" value="ImplementationGuide"/>

@@ -2,6 +2,509 @@
  */
 package fhir.util;
 
+import fhir.ActionList;
+import fhir.Address;
+import fhir.AddressType;
+import fhir.AddressUse;
+import fhir.AdministrativeGender;
+import fhir.Age;
+import fhir.AggregationMode;
+import fhir.AllergyIntolerance;
+import fhir.AllergyIntoleranceCategory;
+import fhir.AllergyIntoleranceCertainty;
+import fhir.AllergyIntoleranceCriticality;
+import fhir.AllergyIntoleranceReaction;
+import fhir.AllergyIntoleranceSeverity;
+import fhir.AllergyIntoleranceStatus;
+import fhir.AllergyIntoleranceType;
+import fhir.Annotation;
+import fhir.AnswerFormat;
+import fhir.Appointment;
+import fhir.AppointmentParticipant;
+import fhir.AppointmentResponse;
+import fhir.AppointmentStatus;
+import fhir.AssertionDirectionType;
+import fhir.AssertionOperatorType;
+import fhir.AssertionResponseTypes;
+import fhir.Attachment;
+import fhir.AuditEvent;
+import fhir.AuditEventAction;
+import fhir.AuditEventDetail;
+import fhir.AuditEventEvent;
+import fhir.AuditEventNetwork;
+import fhir.AuditEventObject;
+import fhir.AuditEventOutcome;
+import fhir.AuditEventParticipant;
+import fhir.AuditEventParticipantNetworkType;
+import fhir.AuditEventSource;
+import fhir.BackboneElement;
+import fhir.Base64Binary;
+import fhir.Basic;
+import fhir.Binary;
+import fhir.BindingStrength;
+import fhir.BodySite;
+import fhir.Bundle;
+import fhir.BundleEntry;
+import fhir.BundleLink;
+import fhir.BundleRequest;
+import fhir.BundleResponse;
+import fhir.BundleSearch;
+import fhir.BundleType;
+import fhir.CarePlan;
+import fhir.CarePlanActivity;
+import fhir.CarePlanActivityStatus;
+import fhir.CarePlanDetail;
+import fhir.CarePlanParticipant;
+import fhir.CarePlanRelatedPlan;
+import fhir.CarePlanRelationship;
+import fhir.CarePlanStatus;
+import fhir.Claim;
+import fhir.ClaimCoverage;
+import fhir.ClaimDetail;
+import fhir.ClaimDiagnosis;
+import fhir.ClaimItem;
+import fhir.ClaimMissingTeeth;
+import fhir.ClaimPayee;
+import fhir.ClaimProsthesis;
+import fhir.ClaimResponse;
+import fhir.ClaimResponseAddItem;
+import fhir.ClaimResponseAdjudication;
+import fhir.ClaimResponseAdjudication1;
+import fhir.ClaimResponseAdjudication2;
+import fhir.ClaimResponseAdjudication3;
+import fhir.ClaimResponseAdjudication4;
+import fhir.ClaimResponseCoverage;
+import fhir.ClaimResponseDetail;
+import fhir.ClaimResponseDetail1;
+import fhir.ClaimResponseError;
+import fhir.ClaimResponseItem;
+import fhir.ClaimResponseNote;
+import fhir.ClaimResponseSubDetail;
+import fhir.ClaimSubDetail;
+import fhir.ClaimType;
+import fhir.ClinicalImpression;
+import fhir.ClinicalImpressionFinding;
+import fhir.ClinicalImpressionInvestigations;
+import fhir.ClinicalImpressionRuledOut;
+import fhir.ClinicalImpressionStatus;
+import fhir.Code;
+import fhir.CodeableConcept;
+import fhir.Coding;
+import fhir.Communication;
+import fhir.CommunicationPayload;
+import fhir.CommunicationRequest;
+import fhir.CommunicationRequestPayload;
+import fhir.CommunicationRequestStatus;
+import fhir.CommunicationStatus;
+import fhir.Composition;
+import fhir.CompositionAttestationMode;
+import fhir.CompositionAttester;
+import fhir.CompositionEvent;
+import fhir.CompositionSection;
+import fhir.CompositionStatus;
+import fhir.ConceptMap;
+import fhir.ConceptMapContact;
+import fhir.ConceptMapDependsOn;
+import fhir.ConceptMapElement;
+import fhir.ConceptMapEquivalence;
+import fhir.ConceptMapTarget;
+import fhir.Condition;
+import fhir.ConditionEvidence;
+import fhir.ConditionStage;
+import fhir.ConditionVerificationStatus;
+import fhir.ConditionalDeleteStatus;
+import fhir.Conformance;
+import fhir.ConformanceCertificate;
+import fhir.ConformanceContact;
+import fhir.ConformanceDocument;
+import fhir.ConformanceEndpoint;
+import fhir.ConformanceEvent;
+import fhir.ConformanceEventMode;
+import fhir.ConformanceImplementation;
+import fhir.ConformanceInteraction;
+import fhir.ConformanceInteraction1;
+import fhir.ConformanceMessaging;
+import fhir.ConformanceOperation;
+import fhir.ConformanceResource;
+import fhir.ConformanceResourceStatus;
+import fhir.ConformanceRest;
+import fhir.ConformanceSearchParam;
+import fhir.ConformanceSecurity;
+import fhir.ConformanceSoftware;
+import fhir.ConformanceStatementKind;
+import fhir.ConstraintSeverity;
+import fhir.ContactPoint;
+import fhir.ContactPointSystem;
+import fhir.ContactPointUse;
+import fhir.ContentType;
+import fhir.Contract;
+import fhir.ContractActor;
+import fhir.ContractActor1;
+import fhir.ContractFriendly;
+import fhir.ContractLegal;
+import fhir.ContractRule;
+import fhir.ContractSigner;
+import fhir.ContractTerm;
+import fhir.ContractValuedItem;
+import fhir.ContractValuedItem1;
+import fhir.Contraindication;
+import fhir.ContraindicationMitigation;
+import fhir.ContraindicationSeverity;
+import fhir.Count;
+import fhir.Coverage;
+import fhir.DataElement;
+import fhir.DataElementContact;
+import fhir.DataElementMapping;
+import fhir.DataElementStringency;
+import fhir.Date;
+import fhir.DateTime;
+import fhir.DaysOfWeek;
+import fhir.Decimal;
+import fhir.Device;
+import fhir.DeviceComponent;
+import fhir.DeviceComponentProductionSpecification;
+import fhir.DeviceMetric;
+import fhir.DeviceMetricCalibration;
+import fhir.DeviceMetricCalibrationState;
+import fhir.DeviceMetricCalibrationType;
+import fhir.DeviceMetricCategory;
+import fhir.DeviceMetricColor;
+import fhir.DeviceMetricOperationalStatus;
+import fhir.DeviceStatus;
+import fhir.DeviceUseRequest;
+import fhir.DeviceUseRequestPriority;
+import fhir.DeviceUseRequestStatus;
+import fhir.DeviceUseStatement;
+import fhir.DiagnosticOrder;
+import fhir.DiagnosticOrderEvent;
+import fhir.DiagnosticOrderItem;
+import fhir.DiagnosticOrderPriority;
+import fhir.DiagnosticOrderStatus;
+import fhir.DiagnosticReport;
+import fhir.DiagnosticReportImage;
+import fhir.DiagnosticReportStatus;
+import fhir.DigitalMediaType;
+import fhir.Distance;
+import fhir.DocumentManifest;
+import fhir.DocumentManifestContent;
+import fhir.DocumentManifestRelated;
+import fhir.DocumentMode;
+import fhir.DocumentReference;
+import fhir.DocumentReferenceContent;
+import fhir.DocumentReferenceContext;
+import fhir.DocumentReferenceRelated;
+import fhir.DocumentReferenceRelatesTo;
+import fhir.DocumentReferenceStatus;
+import fhir.DocumentRelationshipType;
+import fhir.DocumentRoot;
+import fhir.DomainResource;
+import fhir.Duration;
+import fhir.Element;
+import fhir.ElementDefinition;
+import fhir.ElementDefinitionBase;
+import fhir.ElementDefinitionBinding;
+import fhir.ElementDefinitionConstraint;
+import fhir.ElementDefinitionMapping;
+import fhir.ElementDefinitionSlicing;
+import fhir.ElementDefinitionType;
+import fhir.EligibilityRequest;
+import fhir.EligibilityResponse;
+import fhir.Encounter;
+import fhir.EncounterClass;
+import fhir.EncounterHospitalization;
+import fhir.EncounterLocation;
+import fhir.EncounterLocationStatus;
+import fhir.EncounterParticipant;
+import fhir.EncounterState;
+import fhir.EncounterStatusHistory;
+import fhir.EnrollmentRequest;
+import fhir.EnrollmentResponse;
+import fhir.EpisodeOfCare;
+import fhir.EpisodeOfCareCareTeam;
+import fhir.EpisodeOfCareStatus;
+import fhir.EpisodeOfCareStatusHistory;
+import fhir.EventTiming;
+import fhir.ExplanationOfBenefit;
+import fhir.Extension;
+import fhir.ExtensionContext;
+import fhir.FamilyHistoryStatus;
+import fhir.FamilyMemberHistory;
+import fhir.FamilyMemberHistoryCondition;
+import fhir.FhirPackage;
+import fhir.FilterOperator;
+import fhir.Flag;
+import fhir.FlagStatus;
+import fhir.Goal;
+import fhir.GoalOutcome;
+import fhir.GoalStatus;
+import fhir.Group;
+import fhir.GroupCharacteristic;
+import fhir.GroupMember;
+import fhir.GroupType;
+import fhir.GuideDependencyType;
+import fhir.GuidePageKind;
+import fhir.GuideResourcePurpose;
+import fhir.HTTPVerb;
+import fhir.HealthcareService;
+import fhir.HealthcareServiceAvailableTime;
+import fhir.HealthcareServiceNotAvailable;
+import fhir.HealthcareServiceServiceType;
+import fhir.HumanName;
+import fhir.Id;
+import fhir.Identifier;
+import fhir.IdentifierUse;
+import fhir.IdentityAssuranceLevel;
+import fhir.ImagingObjectSelection;
+import fhir.ImagingObjectSelectionFrames;
+import fhir.ImagingObjectSelectionInstance;
+import fhir.ImagingObjectSelectionSeries;
+import fhir.ImagingObjectSelectionStudy;
+import fhir.ImagingStudy;
+import fhir.ImagingStudyInstance;
+import fhir.ImagingStudySeries;
+import fhir.Immunization;
+import fhir.ImmunizationExplanation;
+import fhir.ImmunizationReaction;
+import fhir.ImmunizationRecommendation;
+import fhir.ImmunizationRecommendationDateCriterion;
+import fhir.ImmunizationRecommendationProtocol;
+import fhir.ImmunizationRecommendationRecommendation;
+import fhir.ImmunizationVaccinationProtocol;
+import fhir.ImplementationGuide;
+import fhir.ImplementationGuideContact;
+import fhir.ImplementationGuideDependency;
+import fhir.ImplementationGuideGlobal;
+import fhir.ImplementationGuidePackage;
+import fhir.ImplementationGuidePage;
+import fhir.ImplementationGuideResource;
+import fhir.InstanceAvailability;
+import fhir.Instant;
+import fhir.IssueSeverity;
+import fhir.IssueType;
+import fhir.LinkType;
+import fhir.List;
+import fhir.ListEntry;
+import fhir.ListMode;
+import fhir.ListStatus;
+import fhir.Location;
+import fhir.LocationMode;
+import fhir.LocationPosition;
+import fhir.LocationStatus;
+import fhir.Markdown;
+import fhir.MeasmntPrinciple;
+import fhir.Media;
+import fhir.Medication;
+import fhir.MedicationAdministration;
+import fhir.MedicationAdministrationDosage;
+import fhir.MedicationAdministrationStatus;
+import fhir.MedicationBatch;
+import fhir.MedicationContent;
+import fhir.MedicationDispense;
+import fhir.MedicationDispenseDosageInstruction;
+import fhir.MedicationDispenseStatus;
+import fhir.MedicationDispenseSubstitution;
+import fhir.MedicationIngredient;
+import fhir.MedicationPackage;
+import fhir.MedicationPrescription;
+import fhir.MedicationPrescriptionDispense;
+import fhir.MedicationPrescriptionDosageInstruction;
+import fhir.MedicationPrescriptionStatus;
+import fhir.MedicationPrescriptionSubstitution;
+import fhir.MedicationProduct;
+import fhir.MedicationStatement;
+import fhir.MedicationStatementDosage;
+import fhir.MedicationStatementStatus;
+import fhir.MessageHeader;
+import fhir.MessageHeaderDestination;
+import fhir.MessageHeaderResponse;
+import fhir.MessageHeaderSource;
+import fhir.MessageSignificanceCategory;
+import fhir.Meta;
+import fhir.Money;
+import fhir.NameUse;
+import fhir.NamingSystem;
+import fhir.NamingSystemContact;
+import fhir.NamingSystemIdentifierType;
+import fhir.NamingSystemType;
+import fhir.NamingSystemUniqueId;
+import fhir.Narrative;
+import fhir.NarrativeStatus;
+import fhir.NoteType;
+import fhir.NutritionOrder;
+import fhir.NutritionOrderAdministration;
+import fhir.NutritionOrderEnteralFormula;
+import fhir.NutritionOrderNutrient;
+import fhir.NutritionOrderOralDiet;
+import fhir.NutritionOrderStatus;
+import fhir.NutritionOrderSupplement;
+import fhir.NutritionOrderTexture;
+import fhir.Observation;
+import fhir.ObservationComponent;
+import fhir.ObservationReferenceRange;
+import fhir.ObservationRelated;
+import fhir.ObservationRelationshipType;
+import fhir.ObservationStatus;
+import fhir.Oid;
+import fhir.OperationDefinition;
+import fhir.OperationDefinitionBinding;
+import fhir.OperationDefinitionContact;
+import fhir.OperationDefinitionParameter;
+import fhir.OperationKind;
+import fhir.OperationOutcome;
+import fhir.OperationOutcomeIssue;
+import fhir.OperationParameterUse;
+import fhir.Order;
+import fhir.OrderResponse;
+import fhir.OrderStatus;
+import fhir.OrderWhen;
+import fhir.Organization;
+import fhir.OrganizationContact;
+import fhir.ParticipantRequired;
+import fhir.ParticipantStatus;
+import fhir.ParticipationStatus;
+import fhir.Patient;
+import fhir.PatientAnimal;
+import fhir.PatientCommunication;
+import fhir.PatientContact;
+import fhir.PatientLink;
+import fhir.PaymentNotice;
+import fhir.PaymentReconciliation;
+import fhir.PaymentReconciliationDetail;
+import fhir.PaymentReconciliationNote;
+import fhir.Period;
+import fhir.Person;
+import fhir.PersonLink;
+import fhir.PositiveInt;
+import fhir.Practitioner;
+import fhir.PractitionerPractitionerRole;
+import fhir.PractitionerQualification;
+import fhir.Procedure;
+import fhir.ProcedureFocalDevice;
+import fhir.ProcedurePerformer;
+import fhir.ProcedureRequest;
+import fhir.ProcedureRequestPriority;
+import fhir.ProcedureRequestStatus;
+import fhir.ProcedureStatus;
+import fhir.ProcessRequest;
+import fhir.ProcessRequestItem;
+import fhir.ProcessResponse;
+import fhir.ProcessResponseNotes;
+import fhir.PropertyRepresentation;
+import fhir.Provenance;
+import fhir.ProvenanceAgent;
+import fhir.ProvenanceEntity;
+import fhir.ProvenanceEntityRole;
+import fhir.ProvenanceRelatedAgent;
+import fhir.Quantity;
+import fhir.QuantityComparator;
+import fhir.Questionnaire;
+import fhir.QuestionnaireAnswers;
+import fhir.QuestionnaireAnswersAnswer;
+import fhir.QuestionnaireAnswersGroup;
+import fhir.QuestionnaireAnswersQuestion;
+import fhir.QuestionnaireAnswersStatus;
+import fhir.QuestionnaireGroup;
+import fhir.QuestionnaireQuestion;
+import fhir.QuestionnaireStatus;
+import fhir.Range;
+import fhir.Ratio;
+import fhir.Reference;
+import fhir.ReferralRequest;
+import fhir.ReferralStatus;
+import fhir.RelatedPerson;
+import fhir.RemittanceOutcome;
+import fhir.Resource;
+import fhir.ResourceContainer;
+import fhir.ResourceVersionPolicy;
+import fhir.ResponseType;
+import fhir.RestfulConformanceMode;
+import fhir.RiskAssessment;
+import fhir.RiskAssessmentPrediction;
+import fhir.SampledData;
+import fhir.SampledDataDataType;
+import fhir.Schedule;
+import fhir.SearchEntryMode;
+import fhir.SearchModifierCode;
+import fhir.SearchParamType;
+import fhir.SearchParameter;
+import fhir.SearchParameterContact;
+import fhir.Signature;
+import fhir.SimpleQuantity;
+import fhir.SlicingRules;
+import fhir.Slot;
+import fhir.SlotStatus;
+import fhir.Specimen;
+import fhir.SpecimenCollection;
+import fhir.SpecimenContainer;
+import fhir.SpecimenStatus;
+import fhir.SpecimenTreatment;
+import fhir.StructureDefinition;
+import fhir.StructureDefinitionContact;
+import fhir.StructureDefinitionDifferential;
+import fhir.StructureDefinitionKind;
+import fhir.StructureDefinitionMapping;
+import fhir.StructureDefinitionSnapshot;
+import fhir.Subscription;
+import fhir.SubscriptionChannel;
+import fhir.SubscriptionChannelType;
+import fhir.SubscriptionStatus;
+import fhir.Substance;
+import fhir.SubstanceIngredient;
+import fhir.SubstanceInstance;
+import fhir.Supply;
+import fhir.SupplyDelivery;
+import fhir.SupplyDeliveryStatus;
+import fhir.SupplyDispense;
+import fhir.SupplyDispenseStatus;
+import fhir.SupplyRequest;
+import fhir.SupplyRequestStatus;
+import fhir.SupplyRequestWhen;
+import fhir.SupplyStatus;
+import fhir.SystemRestfulInteraction;
+import fhir.TestScript;
+import fhir.TestScriptAction;
+import fhir.TestScriptAction1;
+import fhir.TestScriptAction2;
+import fhir.TestScriptAssert;
+import fhir.TestScriptCapability;
+import fhir.TestScriptContact;
+import fhir.TestScriptFixture;
+import fhir.TestScriptLink;
+import fhir.TestScriptMetadata;
+import fhir.TestScriptOperation;
+import fhir.TestScriptRequestHeader;
+import fhir.TestScriptSetup;
+import fhir.TestScriptTeardown;
+import fhir.TestScriptTest;
+import fhir.TestScriptVariable;
+import fhir.Time;
+import fhir.Timing;
+import fhir.TimingRepeat;
+import fhir.TransactionMode;
+import fhir.TypeRestfulInteraction;
+import fhir.UnitsOfTime;
+import fhir.UnknownContentCode;
+import fhir.UnsignedInt;
+import fhir.Uri;
+import fhir.Use;
+import fhir.Uuid;
+import fhir.ValueSet;
+import fhir.ValueSetCodeSystem;
+import fhir.ValueSetCompose;
+import fhir.ValueSetConcept;
+import fhir.ValueSetConcept1;
+import fhir.ValueSetContact;
+import fhir.ValueSetContains;
+import fhir.ValueSetDesignation;
+import fhir.ValueSetExpansion;
+import fhir.ValueSetFilter;
+import fhir.ValueSetInclude;
+import fhir.ValueSetParameter;
+import fhir.VisionBase;
+import fhir.VisionEyes;
+import fhir.VisionPrescription;
+import fhir.VisionPrescriptionDispense;
+import fhir.XPathUsageType;
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
 import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
@@ -1022,6 +1525,18 @@ public class FhirAdapterFactory extends AdapterFactoryImpl {
 				return createGroupTypeAdapter();
 			}
 			@Override
+			public Adapter caseGuideDependencyType(GuideDependencyType object) {
+				return createGuideDependencyTypeAdapter();
+			}
+			@Override
+			public Adapter caseGuidePageKind(GuidePageKind object) {
+				return createGuidePageKindAdapter();
+			}
+			@Override
+			public Adapter caseGuideResourcePurpose(GuideResourcePurpose object) {
+				return createGuideResourcePurposeAdapter();
+			}
+			@Override
 			public Adapter caseHealthcareService(HealthcareService object) {
 				return createHealthcareServiceAdapter();
 			}
@@ -1124,6 +1639,34 @@ public class FhirAdapterFactory extends AdapterFactoryImpl {
 			@Override
 			public Adapter caseImmunizationVaccinationProtocol(ImmunizationVaccinationProtocol object) {
 				return createImmunizationVaccinationProtocolAdapter();
+			}
+			@Override
+			public Adapter caseImplementationGuide(ImplementationGuide object) {
+				return createImplementationGuideAdapter();
+			}
+			@Override
+			public Adapter caseImplementationGuideContact(ImplementationGuideContact object) {
+				return createImplementationGuideContactAdapter();
+			}
+			@Override
+			public Adapter caseImplementationGuideDependency(ImplementationGuideDependency object) {
+				return createImplementationGuideDependencyAdapter();
+			}
+			@Override
+			public Adapter caseImplementationGuideGlobal(ImplementationGuideGlobal object) {
+				return createImplementationGuideGlobalAdapter();
+			}
+			@Override
+			public Adapter caseImplementationGuidePackage(ImplementationGuidePackage object) {
+				return createImplementationGuidePackageAdapter();
+			}
+			@Override
+			public Adapter caseImplementationGuidePage(ImplementationGuidePage object) {
+				return createImplementationGuidePageAdapter();
+			}
+			@Override
+			public Adapter caseImplementationGuideResource(ImplementationGuideResource object) {
+				return createImplementationGuideResourceAdapter();
 			}
 			@Override
 			public Adapter caseInstanceAvailability(InstanceAvailability object) {
@@ -5412,6 +5955,48 @@ public class FhirAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
+	 * Creates a new adapter for an object of class '{@link fhir.GuideDependencyType <em>Guide Dependency Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fhir.GuideDependencyType
+	 * @generated
+	 */
+	public Adapter createGuideDependencyTypeAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fhir.GuidePageKind <em>Guide Page Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fhir.GuidePageKind
+	 * @generated
+	 */
+	public Adapter createGuidePageKindAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fhir.GuideResourcePurpose <em>Guide Resource Purpose</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fhir.GuideResourcePurpose
+	 * @generated
+	 */
+	public Adapter createGuideResourcePurposeAdapter() {
+		return null;
+	}
+
+	/**
 	 * Creates a new adapter for an object of class '{@link fhir.HealthcareService <em>Healthcare Service</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -5772,6 +6357,104 @@ public class FhirAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createImmunizationVaccinationProtocolAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fhir.ImplementationGuide <em>Implementation Guide</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fhir.ImplementationGuide
+	 * @generated
+	 */
+	public Adapter createImplementationGuideAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fhir.ImplementationGuideContact <em>Implementation Guide Contact</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fhir.ImplementationGuideContact
+	 * @generated
+	 */
+	public Adapter createImplementationGuideContactAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fhir.ImplementationGuideDependency <em>Implementation Guide Dependency</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fhir.ImplementationGuideDependency
+	 * @generated
+	 */
+	public Adapter createImplementationGuideDependencyAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fhir.ImplementationGuideGlobal <em>Implementation Guide Global</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fhir.ImplementationGuideGlobal
+	 * @generated
+	 */
+	public Adapter createImplementationGuideGlobalAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fhir.ImplementationGuidePackage <em>Implementation Guide Package</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fhir.ImplementationGuidePackage
+	 * @generated
+	 */
+	public Adapter createImplementationGuidePackageAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fhir.ImplementationGuidePage <em>Implementation Guide Page</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fhir.ImplementationGuidePage
+	 * @generated
+	 */
+	public Adapter createImplementationGuidePageAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link fhir.ImplementationGuideResource <em>Implementation Guide Resource</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see fhir.ImplementationGuideResource
+	 * @generated
+	 */
+	public Adapter createImplementationGuideResourceAdapter() {
 		return null;
 	}
 

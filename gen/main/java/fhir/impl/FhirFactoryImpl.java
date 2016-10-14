@@ -311,6 +311,12 @@ import fhir.GroupCharacteristic;
 import fhir.GroupMember;
 import fhir.GroupType;
 import fhir.GroupTypeList;
+import fhir.GuideDependencyType;
+import fhir.GuideDependencyTypeList;
+import fhir.GuidePageKind;
+import fhir.GuidePageKindList;
+import fhir.GuideResourcePurpose;
+import fhir.GuideResourcePurposeList;
 import fhir.HTTPVerb;
 import fhir.HTTPVerbList;
 import fhir.HealthcareService;
@@ -340,6 +346,13 @@ import fhir.ImmunizationRecommendationDateCriterion;
 import fhir.ImmunizationRecommendationProtocol;
 import fhir.ImmunizationRecommendationRecommendation;
 import fhir.ImmunizationVaccinationProtocol;
+import fhir.ImplementationGuide;
+import fhir.ImplementationGuideContact;
+import fhir.ImplementationGuideDependency;
+import fhir.ImplementationGuideGlobal;
+import fhir.ImplementationGuidePackage;
+import fhir.ImplementationGuidePage;
+import fhir.ImplementationGuideResource;
 import fhir.InstanceAvailability;
 import fhir.InstanceAvailabilityList;
 import fhir.Instant;
@@ -934,6 +947,9 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 			case FhirPackage.GROUP_CHARACTERISTIC: return createGroupCharacteristic();
 			case FhirPackage.GROUP_MEMBER: return createGroupMember();
 			case FhirPackage.GROUP_TYPE: return createGroupType();
+			case FhirPackage.GUIDE_DEPENDENCY_TYPE: return createGuideDependencyType();
+			case FhirPackage.GUIDE_PAGE_KIND: return createGuidePageKind();
+			case FhirPackage.GUIDE_RESOURCE_PURPOSE: return createGuideResourcePurpose();
 			case FhirPackage.HEALTHCARE_SERVICE: return createHealthcareService();
 			case FhirPackage.HEALTHCARE_SERVICE_AVAILABLE_TIME: return createHealthcareServiceAvailableTime();
 			case FhirPackage.HEALTHCARE_SERVICE_NOT_AVAILABLE: return createHealthcareServiceNotAvailable();
@@ -960,6 +976,13 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 			case FhirPackage.IMMUNIZATION_RECOMMENDATION_PROTOCOL: return createImmunizationRecommendationProtocol();
 			case FhirPackage.IMMUNIZATION_RECOMMENDATION_RECOMMENDATION: return createImmunizationRecommendationRecommendation();
 			case FhirPackage.IMMUNIZATION_VACCINATION_PROTOCOL: return createImmunizationVaccinationProtocol();
+			case FhirPackage.IMPLEMENTATION_GUIDE: return createImplementationGuide();
+			case FhirPackage.IMPLEMENTATION_GUIDE_CONTACT: return createImplementationGuideContact();
+			case FhirPackage.IMPLEMENTATION_GUIDE_DEPENDENCY: return createImplementationGuideDependency();
+			case FhirPackage.IMPLEMENTATION_GUIDE_GLOBAL: return createImplementationGuideGlobal();
+			case FhirPackage.IMPLEMENTATION_GUIDE_PACKAGE: return createImplementationGuidePackage();
+			case FhirPackage.IMPLEMENTATION_GUIDE_PAGE: return createImplementationGuidePage();
+			case FhirPackage.IMPLEMENTATION_GUIDE_RESOURCE: return createImplementationGuideResource();
 			case FhirPackage.INSTANCE_AVAILABILITY: return createInstanceAvailability();
 			case FhirPackage.INSTANT: return createInstant();
 			case FhirPackage.INTEGER: return createInteger();
@@ -1341,6 +1364,12 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 				return createGoalStatusListFromString(eDataType, initialValue);
 			case FhirPackage.GROUP_TYPE_LIST:
 				return createGroupTypeListFromString(eDataType, initialValue);
+			case FhirPackage.GUIDE_DEPENDENCY_TYPE_LIST:
+				return createGuideDependencyTypeListFromString(eDataType, initialValue);
+			case FhirPackage.GUIDE_PAGE_KIND_LIST:
+				return createGuidePageKindListFromString(eDataType, initialValue);
+			case FhirPackage.GUIDE_RESOURCE_PURPOSE_LIST:
+				return createGuideResourcePurposeListFromString(eDataType, initialValue);
 			case FhirPackage.HTTP_VERB_LIST:
 				return createHTTPVerbListFromString(eDataType, initialValue);
 			case FhirPackage.IDENTIFIER_USE_LIST:
@@ -1629,6 +1658,12 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 				return createGoalStatusListObjectFromString(eDataType, initialValue);
 			case FhirPackage.GROUP_TYPE_LIST_OBJECT:
 				return createGroupTypeListObjectFromString(eDataType, initialValue);
+			case FhirPackage.GUIDE_DEPENDENCY_TYPE_LIST_OBJECT:
+				return createGuideDependencyTypeListObjectFromString(eDataType, initialValue);
+			case FhirPackage.GUIDE_PAGE_KIND_LIST_OBJECT:
+				return createGuidePageKindListObjectFromString(eDataType, initialValue);
+			case FhirPackage.GUIDE_RESOURCE_PURPOSE_LIST_OBJECT:
+				return createGuideResourcePurposeListObjectFromString(eDataType, initialValue);
 			case FhirPackage.HTTP_VERB_LIST_OBJECT:
 				return createHTTPVerbListObjectFromString(eDataType, initialValue);
 			case FhirPackage.IDENTIFIER_USE_LIST_OBJECT:
@@ -1938,6 +1973,12 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 				return convertGoalStatusListToString(eDataType, instanceValue);
 			case FhirPackage.GROUP_TYPE_LIST:
 				return convertGroupTypeListToString(eDataType, instanceValue);
+			case FhirPackage.GUIDE_DEPENDENCY_TYPE_LIST:
+				return convertGuideDependencyTypeListToString(eDataType, instanceValue);
+			case FhirPackage.GUIDE_PAGE_KIND_LIST:
+				return convertGuidePageKindListToString(eDataType, instanceValue);
+			case FhirPackage.GUIDE_RESOURCE_PURPOSE_LIST:
+				return convertGuideResourcePurposeListToString(eDataType, instanceValue);
 			case FhirPackage.HTTP_VERB_LIST:
 				return convertHTTPVerbListToString(eDataType, instanceValue);
 			case FhirPackage.IDENTIFIER_USE_LIST:
@@ -2226,6 +2267,12 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 				return convertGoalStatusListObjectToString(eDataType, instanceValue);
 			case FhirPackage.GROUP_TYPE_LIST_OBJECT:
 				return convertGroupTypeListObjectToString(eDataType, instanceValue);
+			case FhirPackage.GUIDE_DEPENDENCY_TYPE_LIST_OBJECT:
+				return convertGuideDependencyTypeListObjectToString(eDataType, instanceValue);
+			case FhirPackage.GUIDE_PAGE_KIND_LIST_OBJECT:
+				return convertGuidePageKindListObjectToString(eDataType, instanceValue);
+			case FhirPackage.GUIDE_RESOURCE_PURPOSE_LIST_OBJECT:
+				return convertGuideResourcePurposeListObjectToString(eDataType, instanceValue);
 			case FhirPackage.HTTP_VERB_LIST_OBJECT:
 				return convertHTTPVerbListObjectToString(eDataType, instanceValue);
 			case FhirPackage.IDENTIFIER_USE_LIST_OBJECT:
@@ -4784,6 +4831,36 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public GuideDependencyType createGuideDependencyType() {
+		GuideDependencyTypeImpl guideDependencyType = new GuideDependencyTypeImpl();
+		return guideDependencyType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GuidePageKind createGuidePageKind() {
+		GuidePageKindImpl guidePageKind = new GuidePageKindImpl();
+		return guidePageKind;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GuideResourcePurpose createGuideResourcePurpose() {
+		GuideResourcePurposeImpl guideResourcePurpose = new GuideResourcePurposeImpl();
+		return guideResourcePurpose;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public HealthcareService createHealthcareService() {
 		HealthcareServiceImpl healthcareService = new HealthcareServiceImpl();
 		return healthcareService;
@@ -5037,6 +5114,76 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 	public ImmunizationVaccinationProtocol createImmunizationVaccinationProtocol() {
 		ImmunizationVaccinationProtocolImpl immunizationVaccinationProtocol = new ImmunizationVaccinationProtocolImpl();
 		return immunizationVaccinationProtocol;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ImplementationGuide createImplementationGuide() {
+		ImplementationGuideImpl implementationGuide = new ImplementationGuideImpl();
+		return implementationGuide;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ImplementationGuideContact createImplementationGuideContact() {
+		ImplementationGuideContactImpl implementationGuideContact = new ImplementationGuideContactImpl();
+		return implementationGuideContact;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ImplementationGuideDependency createImplementationGuideDependency() {
+		ImplementationGuideDependencyImpl implementationGuideDependency = new ImplementationGuideDependencyImpl();
+		return implementationGuideDependency;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ImplementationGuideGlobal createImplementationGuideGlobal() {
+		ImplementationGuideGlobalImpl implementationGuideGlobal = new ImplementationGuideGlobalImpl();
+		return implementationGuideGlobal;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ImplementationGuidePackage createImplementationGuidePackage() {
+		ImplementationGuidePackageImpl implementationGuidePackage = new ImplementationGuidePackageImpl();
+		return implementationGuidePackage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ImplementationGuidePage createImplementationGuidePage() {
+		ImplementationGuidePageImpl implementationGuidePage = new ImplementationGuidePageImpl();
+		return implementationGuidePage;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public ImplementationGuideResource createImplementationGuideResource() {
+		ImplementationGuideResourceImpl implementationGuideResource = new ImplementationGuideResourceImpl();
+		return implementationGuideResource;
 	}
 
 	/**
@@ -8724,6 +8871,66 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public GuideDependencyTypeList createGuideDependencyTypeListFromString(EDataType eDataType, String initialValue) {
+		GuideDependencyTypeList result = GuideDependencyTypeList.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertGuideDependencyTypeListToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GuidePageKindList createGuidePageKindListFromString(EDataType eDataType, String initialValue) {
+		GuidePageKindList result = GuidePageKindList.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertGuidePageKindListToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GuideResourcePurposeList createGuideResourcePurposeListFromString(EDataType eDataType, String initialValue) {
+		GuideResourcePurposeList result = GuideResourcePurposeList.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertGuideResourcePurposeListToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public HTTPVerbList createHTTPVerbListFromString(EDataType eDataType, String initialValue) {
 		HTTPVerbList result = HTTPVerbList.get(initialValue);
 		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
@@ -11579,6 +11786,60 @@ public class FhirFactoryImpl extends EFactoryImpl implements FhirFactory {
 	 */
 	public String convertGroupTypeListObjectToString(EDataType eDataType, Object instanceValue) {
 		return convertGroupTypeListToString(FhirPackage.eINSTANCE.getGroupTypeList(), instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GuideDependencyTypeList createGuideDependencyTypeListObjectFromString(EDataType eDataType, String initialValue) {
+		return createGuideDependencyTypeListFromString(FhirPackage.eINSTANCE.getGuideDependencyTypeList(), initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertGuideDependencyTypeListObjectToString(EDataType eDataType, Object instanceValue) {
+		return convertGuideDependencyTypeListToString(FhirPackage.eINSTANCE.getGuideDependencyTypeList(), instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GuidePageKindList createGuidePageKindListObjectFromString(EDataType eDataType, String initialValue) {
+		return createGuidePageKindListFromString(FhirPackage.eINSTANCE.getGuidePageKindList(), initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertGuidePageKindListObjectToString(EDataType eDataType, Object instanceValue) {
+		return convertGuidePageKindListToString(FhirPackage.eINSTANCE.getGuidePageKindList(), instanceValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public GuideResourcePurposeList createGuideResourcePurposeListObjectFromString(EDataType eDataType, String initialValue) {
+		return createGuideResourcePurposeListFromString(FhirPackage.eINSTANCE.getGuideResourcePurposeList(), initialValue);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertGuideResourcePurposeListObjectToString(EDataType eDataType, Object instanceValue) {
+		return convertGuideResourcePurposeListToString(FhirPackage.eINSTANCE.getGuideResourcePurposeList(), instanceValue);
 	}
 
 	/**

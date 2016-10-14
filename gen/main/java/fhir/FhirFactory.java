@@ -2173,6 +2173,33 @@ public interface FhirFactory extends EFactory {
 	GroupType createGroupType();
 
 	/**
+	 * Returns a new object of class '<em>Guide Dependency Type</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Guide Dependency Type</em>'.
+	 * @generated
+	 */
+	GuideDependencyType createGuideDependencyType();
+
+	/**
+	 * Returns a new object of class '<em>Guide Page Kind</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Guide Page Kind</em>'.
+	 * @generated
+	 */
+	GuidePageKind createGuidePageKind();
+
+	/**
+	 * Returns a new object of class '<em>Guide Resource Purpose</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Guide Resource Purpose</em>'.
+	 * @generated
+	 */
+	GuideResourcePurpose createGuideResourcePurpose();
+
+	/**
 	 * Returns a new object of class '<em>Healthcare Service</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2405,6 +2432,69 @@ public interface FhirFactory extends EFactory {
 	 * @generated
 	 */
 	ImmunizationVaccinationProtocol createImmunizationVaccinationProtocol();
+
+	/**
+	 * Returns a new object of class '<em>Implementation Guide</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Implementation Guide</em>'.
+	 * @generated
+	 */
+	ImplementationGuide createImplementationGuide();
+
+	/**
+	 * Returns a new object of class '<em>Implementation Guide Contact</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Implementation Guide Contact</em>'.
+	 * @generated
+	 */
+	ImplementationGuideContact createImplementationGuideContact();
+
+	/**
+	 * Returns a new object of class '<em>Implementation Guide Dependency</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Implementation Guide Dependency</em>'.
+	 * @generated
+	 */
+	ImplementationGuideDependency createImplementationGuideDependency();
+
+	/**
+	 * Returns a new object of class '<em>Implementation Guide Global</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Implementation Guide Global</em>'.
+	 * @generated
+	 */
+	ImplementationGuideGlobal createImplementationGuideGlobal();
+
+	/**
+	 * Returns a new object of class '<em>Implementation Guide Package</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Implementation Guide Package</em>'.
+	 * @generated
+	 */
+	ImplementationGuidePackage createImplementationGuidePackage();
+
+	/**
+	 * Returns a new object of class '<em>Implementation Guide Page</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Implementation Guide Page</em>'.
+	 * @generated
+	 */
+	ImplementationGuidePage createImplementationGuidePage();
+
+	/**
+	 * Returns a new object of class '<em>Implementation Guide Resource</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Implementation Guide Resource</em>'.
+	 * @generated
+	 */
+	ImplementationGuideResource createImplementationGuideResource();
 
 	/**
 	 * Returns a new object of class '<em>Instance Availability</em>'.
