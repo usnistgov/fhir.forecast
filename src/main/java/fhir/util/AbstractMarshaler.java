@@ -4,9 +4,9 @@ import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMLResourceFactoryImpl;
+import org.hl7.fhir.FhirPackage;
+import org.w3._1999.xhtml.XhtmlPackage;
 
-import fhir.FhirPackage;
-import xhtml.XhtmlPackage;
 
 public abstract class AbstractMarshaler {
 	

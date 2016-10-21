@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+ 
+<Parameters xmlns="http://hl7.org/fhir">
+  <parameter>
+    <name value="assessmentDate"/>
+    <valueDate value="2016-10-17"/>
+  </parameter>
+  <parameter>
+    <name value="gender"/>
+    <valueCode value="female"/>
+  </parameter>
+  <parameter>
+    <name value="birthDate"/>
+    <valueDate value="2016-08-01"/>
+  </parameter>
+  <parameter>
+    <name value="immunization"/>
+    <resource>
+      <Immunization>
+        <id value="urn:uuid:5a0fc971-49cd-4fa2-baad-5cc3771aee12"/>
+        <meta>
+          <versionId value="1"/>
+          <lastUpdated value="2016-10-17T13:12:49.642-04:00"/>
+        </meta>
+        <contained>
+          <Patient>
+            <id value="patient-forecast-data"/>
+            <gender value="female"/>
+            <birthDate value="2016-08-01"/>
+          </Patient>
+        </contained>
+        <date value="2016-08-02T00:00:00-04:00"/>
+        <vaccineCode>
+          <coding>
+            <system value="http://hl7.org/fhir/v3/VaccineType"/>
+            <code value="08"/>
+            <display value="Hep B, adolescent or pediatric"/>
+          </coding>
+        </vaccineCode>
+        <patient>
+          <reference value="#patient-forecast-data"/>
+        </patient>
+        <wasNotGiven value="false"/>
+        <reported value="false"/>
+      </Immunization>
+    </resource>
+  </parameter>
+</Parameters>

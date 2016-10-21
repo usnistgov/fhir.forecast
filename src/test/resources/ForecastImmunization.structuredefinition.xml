@@ -23,5 +23,50 @@
       <min value="1" />
       <max value="1" />
     </element>
+    <element>
+      <path value="Immunization.wasNotGiven" />
+      <max value="0" />
+    </element>
+    <element>
+      <path value="Immunization.reported" />
+      <max value="0" />
+    </element>
+    <element>
+      <path value="Immunization.performer" />
+      <max value="0" />
+    </element>
+    <element>
+      <path value="Immunization.requester" />
+      <max value="0" />
+    </element>
+    <element>
+      <path value="Immunization.encounter" />
+      <max value="0" />
+    </element>
+    <element>
+      <path value="Immunization.location" />
+      <max value="0" />
+    </element>
+    <element>
+      <path value="Immunization.site" />
+      <max value="0" />
+    </element>
+    <element>
+      <path value="Immunization.note" />
+      <max value="0" />
+    </element>
+    <element>
+      <path value="Immunization.explanation" />
+      <max value="0" />
+    </element>
+    <element>
+      <path value="Immunization.reaction" />
+      <max value="0" />
+    </element>
+    <element>
+      <path value="Immunization.vaccinationProtocol" />
+      <min value="0" />
+      <max value="1" />
+    </element>
   </differential>
 </StructureDefinition>

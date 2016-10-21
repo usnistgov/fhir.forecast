@@ -1,6 +1,7 @@
 package fhir.util;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.StringReader;
 import java.net.URL;
 
@@ -21,10 +22,21 @@ public class Load extends AbstractMarshaler {
 	}
 	
 	public static EObject it(StringReader  reader) {
-		URI uri = URI.createURI("*.modelextension");
+		URI uri = URI.createURI("*.xml");
+	    resource = resourceSet.createResource(uri);
+	    it(new ReaderInputStream(reader));
+
+		EObject eObject = (EObject)
+				resource.getContents().get(0);
+
+		return eObject;
+	}
+	
+	public static EObject it(InputStream  reader) {
+		URI uri = URI.createURI("*.xml");
 	    resource = resourceSet.createResource(uri);
 	    try {
-			resource.load(new ReaderInputStream(reader), null);
+			resource.load(reader, null);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

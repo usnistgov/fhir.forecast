@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<StructureDefinition xmlns="http://hl7.org/fhir">
+  <meta>
+    <lastUpdated value="2016-08-31T15:20:17.965-04:00" />
+  </meta>
+  <url value="StructureDefinition/ForecastImmunizationRecommendation" />
+  <version value="0.0" />
+  <name value="ForecastImmunizationRecommendation" />
+  <display value="Forecast Profile" />
+  <status value="draft" />
+  <experimental value="true" />
+  <publisher value="AIRA/NIST" />
+  <date value="2016-08-31T00:00:00-04:00" />
+  <fhirVersion value="1.0.2" />
+  <kind value="resource" />
+  <constrainedType value="ImmunizationRecommendation" />
+  <abstract value="false" />
+  <base value="http://hl7.org/fhir/StructureDefinition/ImmunizationRecommendation" />
+  <differential>
+    <element>
+      <path value="ImmunizationRecommendation" />
+      <type>
+        <code value="ImmunizationRecommendation" />
+      </type>
+    </element>
+    <element>
+      <path value="ImmunizationRecommendation.identifier" />
+      <min value="1" />
+      <max value="1" />
+    </element>
+    <element>
+      <path value="ImmunizationRecommendation.patient" />
+      <min value="1" />
+      <max value="1" />
+    </element>
+    <element>
+      <path value="ImmunizationRecommendation.recommendation" />
+      <min value="1" />
+      <max value="1" />
+    </element>
+  </differential>
+</StructureDefinition>

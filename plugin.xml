@@ -60,4 +60,12 @@
             genModel="model/forecast.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated try -->
+      <package
+            uri="try.try"
+            class="try_.TryPackage"
+            genModel="model/try.genmodel"/>
+   </extension>
+
 </plugin>

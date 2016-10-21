@@ -23,5 +23,30 @@
       <min value="1" />
       <max value="1" />
     </element>
+    <element>
+      <path value="Immunization.performer" />
+      <min value="0" />
+      <max value="0" />
+    </element>
+    <element>
+      <path value="Immunization.requester" />
+      <min value="0" />
+      <max value="0" />
+    </element>
+    <element>
+      <path value="Immunization.encounter" />
+      <min value="0" />
+      <max value="0" />
+    </element>
+    <element>
+      <path value="Immunization.location" />
+      <min value="0" />
+      <max value="0" />
+    </element>
+    <element>
+      <path value="Immunization.lotNumber" />
+      <min value="0" />
+      <max value="0" />
+    </element>
   </differential>
 </StructureDefinition>

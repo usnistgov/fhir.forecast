@@ -1,0 +1,73 @@
+gov.nist.forecast.fhir.service.ImmunizationRecommendationServiceTest@762637be
+fhir.impl.ParametersImpl@4b97c4ad
+<?xml version="1.0" encoding="ASCII"?>
+<fhir:Parameters xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:fhir="http://hl7.org/fhir" xmlns:forecast="fhir.forecast">
+  <parameter>
+    <name value="serviceURL"/>
+    <valueString value="http://tchforecasttester.org/fv/forecast"/>
+  </parameter>
+  <parameter>
+    <name value="serviceType"/>
+    <valueString value="TCH"/>
+  </parameter>
+  <parameter>
+    <name value="assesmentDate"/>
+    <valueDate value="2016-10-19T15:46:22.703-04:00"/>
+  </parameter>
+  <parameter>
+    <name value="gender"/>
+  </parameter>
+  <parameter>
+    <name value="birthDate"/>
+  </parameter>
+  <parameter>
+    <name value="immunizations"/>
+    <part>
+      <name value="immunization"/>
+      <resource>
+        <immunization xsi:type="forecast:ForecastImmunization">
+          <meta>
+            <versionId value="1"/>
+            <lastUpdated value="2016-10-19T03:46:22"/>
+          </meta>
+          <contained>
+            <patient xsi:type="forecast:ForecastPatient"/>
+          </contained>
+          <date value="2016-10-19T15:46:22.712-04:00"/>
+          <vaccineCode>
+            <coding>
+              <system value="http://hl7.org/fhir/v3/vs/VaccineType"/>
+              <code value="08"/>
+              <display/>
+            </coding>
+          </vaccineCode>
+        </immunization>
+      </resource>
+    </part>
+    <part>
+      <name value="immunization"/>
+      <resource>
+        <immunization xsi:type="forecast:ForecastImmunization">
+          <meta>
+            <versionId value="2"/>
+            <lastUpdated value="2016-10-19T03:46:22"/>
+          </meta>
+          <contained>
+            <patient xsi:type="forecast:ForecastPatient">
+              <gender value="MALE"/>
+              <birthDate value="2011-01-01T00:00:00.000-05:00"/>
+            </patient>
+          </contained>
+          <date value="2016-10-19T15:46:22.716-04:00"/>
+          <vaccineCode>
+            <coding>
+              <system value="http://hl7.org/fhir/v3/vs/VaccineType"/>
+              <code value="53"/>
+              <display/>
+            </coding>
+          </vaccineCode>
+        </immunization>
+      </resource>
+    </part>
+  </parameter>
+</fhir:Parameters>

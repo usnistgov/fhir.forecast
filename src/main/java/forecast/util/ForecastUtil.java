@@ -5,30 +5,28 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.hl7.fhir.AdministrativeGenderList;
+import org.hl7.fhir.Code;
+import org.hl7.fhir.CodeableConcept;
+import org.hl7.fhir.Coding;
+import org.hl7.fhir.FhirFactory;
+import org.hl7.fhir.Identifier;
+import org.hl7.fhir.Immunization;
+import org.hl7.fhir.ImmunizationRecommendation;
+import org.hl7.fhir.ImmunizationRecommendationRecommendation;
+import org.hl7.fhir.Meta;
+import org.hl7.fhir.Patient;
+import org.hl7.fhir.Reference;
+import org.hl7.fhir.ResourceContainer;
+import org.hl7.fhir.String;
+import org.hl7.fhir.Uri;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tch.fc.model.EvaluationActual;
 import org.tch.fc.model.ForecastActual;
-import org.tch.fc.model.TestCase;
 import org.tch.fc.model.TestEvent;
 
-import fhir.AdministrativeGenderList;
-import fhir.Code;
-import fhir.CodeableConcept;
-import fhir.Coding;
-import fhir.FhirFactory;
-import fhir.Identifier;
-import fhir.Immunization;
-import fhir.ImmunizationRecommendationRecommendation;
-import fhir.Meta;
-import fhir.Reference;
-import fhir.String;
-import fhir.Uri;
 import fhir.util.FHIRUtil;
-import forecast.ForecastFactory;
-import forecast.ForecastImmunizationRecomendation;
-import forecast.ForecastImmunizationRecommendationRecommendation;
-import forecast.ForecastPatient;
 
 public class ForecastUtil {
 
@@ -39,6 +37,23 @@ public class ForecastUtil {
 	public static final String ABSOLUTE_URL = FHIRUtil.convert(URL);
 
 	static Map<String, Uri> mapProfile = new HashMap<String, Uri>();
+	
+	public enum FORECAST_PARAMETERs {
+		
+		SERVICE_URL("serviceURL"),
+		SERVICE_TYPE("serviceType"),
+		ASSESMENT_DATE("assesmentDate"),
+		BIRTH_DATE("birthDate"),
+		GENDER("gender"),
+		IMMUNIZATION("immunization"),
+		IMMUNIZATIONS("immunizations");
+		
+		public final java.lang.String code;
+		
+		FORECAST_PARAMETERs(java.lang.String code) {
+			this.code = code;
+		}
+	}
 
 	public enum PROFILEs {
 
@@ -75,13 +90,15 @@ public class ForecastUtil {
 		}
 	}
 
-	public static ForecastImmunizationRecomendation createForecastImmunizationRecomendation(ForecastActual i,
-			Reference patient, List<TestEvent> events) {
-		ForecastImmunizationRecomendation o = ForecastFactory.eINSTANCE.createForecastImmunizationRecomendation();
+	public static ImmunizationRecommendation createForecastImmunizationRecommendation(ForecastActual i,
+			Patient patient, List<TestEvent> events) {
+		ImmunizationRecommendation o = FhirFactory.eINSTANCE.createImmunizationRecommendation();
 		o.setId(FHIRUtil.createId());
 		o.getIdentifier().add(FHIRUtil.createIdentifier());
 		o.setMeta(createMeta(URIs.FORECAST_IMMUNIZATIONRECOMMENDATION));
-		o.setPatient(patient);
+		ResourceContainer rc0 = FhirFactory.eINSTANCE.createResourceContainer();
+		rc0.setPatient(patient);
+		o.getContained().add(rc0);
 		log.debug("vaccineGroup=" + i.getVaccineGroup());
 		ImmunizationRecommendationRecommendation irr = createImmunizationRecommendationRecommendation(i.getDueDate(),
 				i.getVaccineGroup().getVaccineCvx());
@@ -94,8 +111,8 @@ public class ForecastUtil {
 	public static ImmunizationRecommendationRecommendation createImmunizationRecommendationRecommendation(
 			java.util.Date date, java.lang.String vaccineCvx) {
 		log.debug("vaccineCvx=" + vaccineCvx);
-		ForecastImmunizationRecommendationRecommendation o = ForecastFactory.eINSTANCE
-				.createForecastImmunizationRecommendationRecommendation();
+		ImmunizationRecommendationRecommendation o = FhirFactory.eINSTANCE
+				.createImmunizationRecommendationRecommendation();
 		o.setId(FHIRUtil.createId().getValue());
 		o.setDate(FHIRUtil.convertDateTime(date));
 		CodeableConcept code = FhirFactory.eINSTANCE.createCodeableConcept();
@@ -104,16 +121,16 @@ public class ForecastUtil {
 		return (ImmunizationRecommendationRecommendation) o;
 	}
 
-	public static ForecastPatient createForecastPatient(TestCase i) {
-		log.trace("convert==> i=" + i);
-		ForecastPatient o = ForecastFactory.eINSTANCE.createForecastPatient();
-		o.setId(FHIRUtil.createId());
-		o.getIdentifier().add(FHIRUtil.createIdentifier());
-		o.setMeta(createMeta(URIs.FORECAST_PATIENT));
-		o.setGender(createGender(i.getPatientSex()));
-		o.setBirthDate(FHIRUtil.convert(i.getPatientDob()));
-		return o;
-	}
+//	public static Patient createForecastPatient(TestCase i) {
+//		log.trace("convert==> i=" + i);
+//		ForecastPatient o = FhirFactory.eINSTANCE.createPatient();
+//		o.setId(FHIRUtil.createId());
+//		o.getIdentifier().add(FHIRUtil.createIdentifier());
+//		o.setMeta(createMeta(URIs.FORECAST_PATIENT));
+//		o.setGender(createGender(i.getPatientSex()));
+//		o.setBirthDate(FHIRUtil.convert(i.getPatientDob()));
+//		return o;
+//	}
 
 	public List<Immunization> createImmunizations(List<TestEvent> events, Reference patient) {
 		List<Immunization> immunizations = new ArrayList<Immunization>();
@@ -131,33 +148,49 @@ public class ForecastUtil {
 	}
 
 	public static CodeableConcept createCodeableConcept(EvaluationActual eval) {
+		return createCodeableConcept(eval.getSeriesUsedCode(), eval.getSeriesUsedText(), "http://hl7.org/fhir/v3/vs/VaccineType");
+	}
+
+	public static CodeableConcept createCodeableConcept(java.lang.String code, java.lang.String text, java.lang.String uri) {
 		CodeableConcept cc = FhirFactory.eINSTANCE.createCodeableConcept();
-//		cc.setId("");
-//		cc.setText(eval.);
-//		Coding coding = FhirFactory.eINSTANCE.createCoding();
-//		coding.setId(value);
-//		Code value = FhirFactory.eINSTANCE.createCode();
-//		value.setValue(value);
-//		coding.setCode(event.getLabel());
-//		cc.getCoding().add(coding);
+		Coding coding = FhirFactory.eINSTANCE.createCoding();
+//		coding.setId(UUID.randomUUID().toString());
+		coding.setSystem(FHIRUtil.createUri(uri));
+		coding.setDisplay(FHIRUtil.convert(text));
+		Code value = FhirFactory.eINSTANCE.createCode();
+		value.setValue(code);
+		coding.setCode(value);
+		cc.getCoding().add(coding);
 		return cc;
+	}
+	
+	public static Meta createMeta(java.lang.String date, java.lang.String versionId) {
+		Meta meta = FhirFactory.eINSTANCE.createMeta();
+		meta.setLastUpdated(FHIRUtil.createInstant(date));
+		meta.setVersionId(FHIRUtil.createId(versionId));
+		return meta;
 	}
 
 	public static Meta createMeta(URIs profile) {
 		Meta meta = FhirFactory.eINSTANCE.createMeta();
-		meta.setId(FHIRUtil.createId().getValue());
 		meta.getProfile().add(profile.uri);
 		return meta;
 	}
-
-	public static Reference createReference(ForecastPatient i) {
-		Reference o = FhirFactory.eINSTANCE.createReference();
-		o.setId(FHIRUtil.createId().getValue());
-		java.lang.String s = java.lang.String.format("%s?identifier=%s", i.eClass().getName(),
-				i.getIdentifier().get(0).getValue().getValue());
-		o.setReference(FHIRUtil.createURN(FHIRUtil.convert(s)));
+	
+	public static ResourceContainer createResourceContainer(Patient i) {
+		ResourceContainer o = FhirFactory.eINSTANCE.createResourceContainer();
+		o.setPatient(i);
 		return o;
 	}
+
+//	public static Reference createReference(Patient i) {
+//		Reference o = FhirFactory.eINSTANCE.createReference();
+//		o.setId(FHIRUtil.createId().getValue());
+//		java.lang.String s = java.lang.String.format("%s?identifier=%s", i.eClass().getName(),
+//				i.getIdentifier().get(0).getValue().getValue());
+//		o.setReference(FHIRUtil.createURN(FHIRUtil.convert(s)));
+//		return o;
+//	}
 
 	public static Reference createReference(Identifier i) {
 		Reference o = FhirFactory.eINSTANCE.createReference();
@@ -221,4 +254,19 @@ public class ForecastUtil {
 		}
 		return bld.toString();
 	}
+	
+//	public static java.lang.String parametersToString(Parameters p) {
+//		StringBuilder bld = new StringBuilder();
+//		bld.append("\n Id=" + p.getId());
+//		for(ParametersParameter pp :  p.getParameter()) {
+//			bld.append("\n name=" + pp.getName());
+//			for(ParametersParameter part :  pp.getPart()) {
+//			bld.append("\n  Id=" + part.getId());
+//			bld.append("\n  Date=" + part.getResource().getImmunization().getDate());
+//			bld.append("\n  =" + part.getResource().getImmunization(). ;
+//			bld.append("\n  =" + part ;
+//			bld.append("\n  =" + part ;
+//		}
+//		return bld.toString();
+//	}
 }
