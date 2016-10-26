@@ -144,7 +144,7 @@ public abstract class FHIRUtil {
 	}
 
 	public static java.util.Date convert(org.hl7.fhir.Date i) throws ParseException {
-		return sdf.parse(i.getId());
+		return sdf.parse(i.getValue().toString());
 	}
 	
 	public static java.util.Date convert(DateTime i) {
