@@ -27,6 +27,10 @@ dependencies {
 	compile 'org.eclipse.emf:org.eclipse.emf.ecore:2.12.0'
 	compile 'org.eclipse.emf:org.eclipse.emf.ecore.xmi:2.12.0'
 	compile 'org.emfjson:emfjson-jackson:1.0.0-rc.1'
+
+	compile 'org.eclipse.emf:org.eclipse.emf.common.source:2.12.0'
+	compile 'org.eclipse.emf:org.eclipse.emf.ecore.source:2.12.0'
+	compile 'org.eclipse.emf:org.eclipse.emf.ecore.xmi.source:2.12.0'
 	
 	// Logging
 	compile 'org.slf4j:slf4j-api:1.7.21'

@@ -15,8 +15,8 @@ public abstract class AbstractSerializeDeserialize {
 
 	static Logger log = LoggerFactory.getLogger(AbstractSerializeDeserialize.class);
 
-	static ResourceSet resourceSet = new ResourceSetImpl();
-	static Resource resource;
+	protected final ResourceSet resourceSet = new ResourceSetImpl();
+	protected Resource resource;
 
 	protected AbstractSerializeDeserialize() {
 		log.trace("AbstractMarshaler==>" + resourceSet);

@@ -1,5 +1,6 @@
 package forecast.util;
 
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -13,9 +14,12 @@ import org.hl7.fhir.FhirFactory;
 import org.hl7.fhir.Identifier;
 import org.hl7.fhir.Immunization;
 import org.hl7.fhir.ImmunizationRecommendation;
+import org.hl7.fhir.ImmunizationRecommendationDateCriterion;
 import org.hl7.fhir.ImmunizationRecommendationRecommendation;
+import org.hl7.fhir.ImmunizationVaccinationProtocol;
 import org.hl7.fhir.Meta;
 import org.hl7.fhir.Patient;
+import org.hl7.fhir.PositiveInt;
 import org.hl7.fhir.Reference;
 import org.hl7.fhir.ResourceContainer;
 import org.hl7.fhir.String;
@@ -24,6 +28,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tch.fc.model.EvaluationActual;
 import org.tch.fc.model.ForecastActual;
+import org.tch.fc.model.TestCase;
 import org.tch.fc.model.TestEvent;
 
 import fhir.util.FHIRUtil;
@@ -37,19 +42,14 @@ public class ForecastUtil {
 	public static final String ABSOLUTE_URL = FHIRUtil.convert(URL);
 
 	static Map<String, Uri> mapProfile = new HashMap<String, Uri>();
-	
+
 	public enum FORECAST_PARAMETERs {
-		
-		SERVICE_URL("serviceURL"),
-		SERVICE_TYPE("serviceType"),
-		ASSESMENT_DATE("assesmentDate"),
-		BIRTH_DATE("birthDate"),
-		GENDER("gender"),
-		IMMUNIZATION("immunization"),
-		IMMUNIZATIONS("immunizations");
-		
+
+		SERVICE_URL("serviceURL"), SERVICE_TYPE("serviceType"), ASSESMENT_DATE("assesmentDate"), BIRTH_DATE(
+				"birthDate"), GENDER("gender"), IMMUNIZATION("immunization"), IMMUNIZATIONS("immunizations");
+
 		public final java.lang.String code;
-		
+
 		FORECAST_PARAMETERs(java.lang.String code) {
 			this.code = code;
 		}
@@ -74,11 +74,11 @@ public class ForecastUtil {
 
 	public enum URIs {
 
-		FORECAST_IMPLEMENTATIONGUIDE("StructureDefinition/ImplementationGuide"), FORECAST_PATIENT(
-				"StructureDefinition/ForecastPatient"), FORECAST_IMMUNIZATION(
-						"StructureDefinition/ForecastImmunization"), FORECAST_IMMUNIZATIONRECOMMENDATION(
-								"StructureDefinition/ForecastImmunizationRecomendation"), FORECAST_IMMUNIZATIONRECOMMENDATIONRECOMMENDATION(
-										"StructureDefinition/ImmunizationRecommendationRecommendation"), FORECAST_CONFORMANCE(
+		FORECAST_IMPLEMENTATIONGUIDE("ForecastImplementationGuide"), FORECAST_PATIENT(
+				"ForecastPatient"), FORECAST_IMMUNIZATION(
+						"ForecastImmunization"), FORECAST_IMMUNIZATIONRECOMMENDATION(
+								"ForecastImmunizationRecommendation"), FORECAST_IMMUNIZATIONRECOMMENDATIONRECOMMENDATION(
+										"ForecastImmunizationRecommendationRecommendation"), FORECAST_CONFORMANCE(
 												"Conformance");
 
 		public final Uri uri;
@@ -90,8 +90,8 @@ public class ForecastUtil {
 		}
 	}
 
-	public static ImmunizationRecommendation createForecastImmunizationRecommendation(ForecastActual i,
-			Patient patient, List<TestEvent> events) {
+	public static ImmunizationRecommendation createForecastImmunizationRecommendation(ForecastActual i, Patient patient,
+			List<TestEvent> events) {
 		ImmunizationRecommendation o = FhirFactory.eINSTANCE.createImmunizationRecommendation();
 		o.setId(FHIRUtil.createId());
 		o.getIdentifier().add(FHIRUtil.createIdentifier());
@@ -100,61 +100,115 @@ public class ForecastUtil {
 		rc0.setPatient(patient);
 		o.getContained().add(rc0);
 		log.debug("vaccineGroup=" + i.getVaccineGroup());
-		ImmunizationRecommendationRecommendation irr = createImmunizationRecommendationRecommendation(i.getDueDate(),
-				i.getVaccineGroup().getVaccineCvx());
+		ImmunizationRecommendationRecommendation irr = createImmunizationRecommendationRecommendation(i);
 		o.getRecommendation().add(irr);
-//		Immunization immunization = createImmunizations(events, patient);
-//		irr.getSupportingImmunization().add(immunization);
 		return o;
 	}
 
 	public static ImmunizationRecommendationRecommendation createImmunizationRecommendationRecommendation(
-			java.util.Date date, java.lang.String vaccineCvx) {
-		log.debug("vaccineCvx=" + vaccineCvx);
+			ForecastActual i) {
 		ImmunizationRecommendationRecommendation o = FhirFactory.eINSTANCE
 				.createImmunizationRecommendationRecommendation();
 		o.setId(FHIRUtil.createId().getValue());
-		o.setDate(FHIRUtil.convertDateTime(date));
+		o.setDate(FHIRUtil.convertDateTime(i.getDueDate()));
 		CodeableConcept code = FhirFactory.eINSTANCE.createCodeableConcept();
-		code.setText(FHIRUtil.convert(vaccineCvx));
+		code.setText(FHIRUtil.convert(i.getVaccineCvx()));
 		o.setVaccineCode(code);
+		PositiveInt pi = FhirFactory.eINSTANCE.createPositiveInt();
+		pi.setValue(new BigInteger(i.getDoseNumber()));
+		o.setDoseNumber(pi);
+		CodeableConcept forecastStatus = FhirFactory.eINSTANCE.createCodeableConcept();
+		forecastStatus.getCoding().add(FHIRUtil.IMMUNIZATION_RECOMMENDATION_STATUS.DUE.coding);
+
+		ImmunizationRecommendationDateCriterion dueCriterion = createImmunizationRecommendationDateCriterion(
+				FHIRUtil.IMMUNIZATION_RECOMMENDATION_DATE_CRITERION.DUE, i.getDueDate());
+		o.getDateCriterion().add(dueCriterion);
+		ImmunizationRecommendationDateCriterion earliestCriterion = createImmunizationRecommendationDateCriterion(
+				FHIRUtil.IMMUNIZATION_RECOMMENDATION_DATE_CRITERION.EARLIEST, i.getDueDate());
+		o.getDateCriterion().add(earliestCriterion);
+		ImmunizationRecommendationDateCriterion overdueCriterion = createImmunizationRecommendationDateCriterion(
+				FHIRUtil.IMMUNIZATION_RECOMMENDATION_DATE_CRITERION.OVERDUE, i.getOverdueDate());
+		o.getDateCriterion().add(overdueCriterion);
+		ImmunizationRecommendationDateCriterion latestCriterion = createImmunizationRecommendationDateCriterion(
+				FHIRUtil.IMMUNIZATION_RECOMMENDATION_DATE_CRITERION.LATEST, i.getOverdueDate());
+		o.getDateCriterion().add(latestCriterion);
+
 		return (ImmunizationRecommendationRecommendation) o;
 	}
 
-//	public static Patient createForecastPatient(TestCase i) {
-//		log.trace("convert==> i=" + i);
-//		ForecastPatient o = FhirFactory.eINSTANCE.createPatient();
-//		o.setId(FHIRUtil.createId());
-//		o.getIdentifier().add(FHIRUtil.createIdentifier());
-//		o.setMeta(createMeta(URIs.FORECAST_PATIENT));
-//		o.setGender(createGender(i.getPatientSex()));
-//		o.setBirthDate(FHIRUtil.convert(i.getPatientDob()));
-//		return o;
-//	}
+	public static ImmunizationRecommendationDateCriterion createImmunizationRecommendationDateCriterion(
+			FHIRUtil.IMMUNIZATION_RECOMMENDATION_DATE_CRITERION crit, java.util.Date date) {
+		ImmunizationRecommendationDateCriterion dateCriterion = FhirFactory.eINSTANCE
+				.createImmunizationRecommendationDateCriterion();
+		CodeableConcept forecastStatus = FhirFactory.eINSTANCE.createCodeableConcept();
+		forecastStatus.getCoding().add(crit.coding);
+		dateCriterion.setCode(forecastStatus);
+		dateCriterion.setValue(FHIRUtil.convertDateTime(date));
+		return dateCriterion;
+	}
 
-	public List<Immunization> createImmunizations(List<TestEvent> events, Reference patient) {
+	public static Patient createPatient(TestCase i) {
+		Patient o = FhirFactory.eINSTANCE.createPatient();
+		o.setId(FHIRUtil.createId());
+		o.getIdentifier().add(FHIRUtil.createIdentifier());
+		o.setMeta(createMeta(URIs.FORECAST_PATIENT));
+		o.setGender(createGender(i.getPatientSex()));
+		o.setBirthDate(FHIRUtil.convert(i.getPatientDob()));
+		return o;
+	}
+
+	public List<Immunization> createImmunizations(TestCase tc, Reference patient) {
 		List<Immunization> immunizations = new ArrayList<Immunization>();
-//		for(TestEvent event : events) {
-//			Immunization immunization = FhirFactory.eINSTANCE.createImmunization();
-//			immunization.setId(FHIRUtil.createId());
-//			immunization.setStatus(value);
-//			immunization.setDate(FHIRUtil.convertDateTime(event.getEventDate()));
-//			immunization.setDoseQuantity(value)
-//			event.getEvent().
-//			CodeableConcept cc = createCodeableConcept(event.getEvaluationActualList());
-//			immunization.setVaccineCode(value);
-//		}
+		for (TestEvent event : tc.getTestEventList()) {
+			Immunization immunization = createImmunization(event, patient);
+			immunizations.add(immunization);
+		}
 		return immunizations;
 	}
 
-	public static CodeableConcept createCodeableConcept(EvaluationActual eval) {
-		return createCodeableConcept(eval.getSeriesUsedCode(), eval.getSeriesUsedText(), "http://hl7.org/fhir/v3/vs/VaccineType");
+	public Immunization createImmunization(TestEvent event, Reference patient) {
+		Immunization immunization = FhirFactory.eINSTANCE.createImmunization();
+		immunization.setId(FHIRUtil.createId());
+		immunization.setMeta(createMeta(event.getEventDate(), "1"));
+		immunization.setStatus(FHIRUtil.IMMUNIZATION_STATUS.COMPLETED.coding.getCode());
+		immunization.setDate(FHIRUtil.convertDateTime(event.getEventDate()));
+
+		CodeableConcept vaccineType = createCodeableConcept(event);
+		immunization.setVaccineCode(vaccineType);
+		for (EvaluationActual eval : event.getEvaluationActualList()) {
+			ImmunizationVaccinationProtocol ivp = createImmunizationVaccinationProtocol(eval);
+			immunization.getVaccinationProtocol().add(ivp);
+		}
+		return immunization;
 	}
 
-	public static CodeableConcept createCodeableConcept(java.lang.String code, java.lang.String text, java.lang.String uri) {
+	ImmunizationVaccinationProtocol createImmunizationVaccinationProtocol(EvaluationActual eval) {
+		ImmunizationVaccinationProtocol ivp = FhirFactory.eINSTANCE.createImmunizationVaccinationProtocol();
+		PositiveInt pInt = FhirFactory.eINSTANCE.createPositiveInt();
+		pInt.setValue(BigInteger.valueOf(1L));
+		ivp.setDoseSequence(pInt);
+		// The following has not yet been implemented in the forecaster.
+		// ivp.setSeries(value);
+		// ivp.setSeriesDoses(value);
+		// ivp.setDoseStatus(value);
+		return ivp;
+	}
+
+	public static CodeableConcept createCodeableConcept(TestEvent event) {
+		return createCodeableConcept(event.getConditionCode(), event.getLabelScreen(),
+				"http://hl7.org/fhir/v3/vs/VaccineType");
+	}
+
+	public static CodeableConcept createCodeableConcept(EvaluationActual eval) {
+		return createCodeableConcept(eval.getSeriesUsedCode(), eval.getSeriesUsedText(),
+				"http://hl7.org/fhir/v3/vs/vaccination-protocol-dose-target");
+	}
+
+	public static CodeableConcept createCodeableConcept(java.lang.String code, java.lang.String text,
+			java.lang.String uri) {
 		CodeableConcept cc = FhirFactory.eINSTANCE.createCodeableConcept();
 		Coding coding = FhirFactory.eINSTANCE.createCoding();
-//		coding.setId(UUID.randomUUID().toString());
+		// coding.setId(UUID.randomUUID().toString());
 		coding.setSystem(FHIRUtil.createUri(uri));
 		coding.setDisplay(FHIRUtil.convert(text));
 		Code value = FhirFactory.eINSTANCE.createCode();
@@ -163,8 +217,15 @@ public class ForecastUtil {
 		cc.getCoding().add(coding);
 		return cc;
 	}
-	
+
 	public static Meta createMeta(java.lang.String date, java.lang.String versionId) {
+		Meta meta = FhirFactory.eINSTANCE.createMeta();
+		meta.setLastUpdated(FHIRUtil.createInstant(date));
+		meta.setVersionId(FHIRUtil.createId(versionId));
+		return meta;
+	}
+
+	public static Meta createMeta(java.util.Date date, java.lang.String versionId) {
 		Meta meta = FhirFactory.eINSTANCE.createMeta();
 		meta.setLastUpdated(FHIRUtil.createInstant(date));
 		meta.setVersionId(FHIRUtil.createId(versionId));
@@ -176,21 +237,22 @@ public class ForecastUtil {
 		meta.getProfile().add(profile.uri);
 		return meta;
 	}
-	
+
 	public static ResourceContainer createResourceContainer(Patient i) {
 		ResourceContainer o = FhirFactory.eINSTANCE.createResourceContainer();
 		o.setPatient(i);
 		return o;
 	}
 
-//	public static Reference createReference(Patient i) {
-//		Reference o = FhirFactory.eINSTANCE.createReference();
-//		o.setId(FHIRUtil.createId().getValue());
-//		java.lang.String s = java.lang.String.format("%s?identifier=%s", i.eClass().getName(),
-//				i.getIdentifier().get(0).getValue().getValue());
-//		o.setReference(FHIRUtil.createURN(FHIRUtil.convert(s)));
-//		return o;
-//	}
+	// public static Reference createReference(Patient i) {
+	// Reference o = FhirFactory.eINSTANCE.createReference();
+	// o.setId(FHIRUtil.createId().getValue());
+	// java.lang.String s = java.lang.String.format("%s?identifier=%s",
+	// i.eClass().getName(),
+	// i.getIdentifier().get(0).getValue().getValue());
+	// o.setReference(FHIRUtil.createURN(FHIRUtil.convert(s)));
+	// return o;
+	// }
 
 	public static Reference createReference(Identifier i) {
 		Reference o = FhirFactory.eINSTANCE.createReference();
@@ -235,38 +297,38 @@ public class ForecastUtil {
 			bld.append("\n TestEventId=" + te.getTestEventId());
 			List<EvaluationActual> eal = te.getEvaluationActualList();
 			if (eal != null) {
-			for (EvaluationActual eval : te.getEvaluationActualList()) {
-				bld.append("\n EvaluationActual==>");
-				bld.append("\n DoseNumber=" + eval.getDoseNumber());
-				bld.append("\n DoseValid=" + eval.getDoseValid());
-				bld.append("\n EvaluationReason=" + eval.getEvaluationReason());
-				bld.append("\n EvaluationReasonCode=" + eval.getEvaluationReasonCode());
-				bld.append("\n EvaluationStatus=" + eval.getEvaluationStatus());
-				bld.append("\n ReasonText=" + eval.getReasonCode());
-				bld.append("\n ForecastReason=" + eval.getReasonText());
-				bld.append("\n SeriesUsedCode=" + eval.getSeriesUsedCode());
-				bld.append("\n SeriesUsedText=" + eval.getSeriesUsedText());
-				bld.append("\n VaccineCvx=" + eval.getVaccineCvx());
-			}
+				for (EvaluationActual eval : te.getEvaluationActualList()) {
+					bld.append("\n EvaluationActual==>");
+					bld.append("\n DoseNumber=" + eval.getDoseNumber());
+					bld.append("\n DoseValid=" + eval.getDoseValid());
+					bld.append("\n EvaluationReason=" + eval.getEvaluationReason());
+					bld.append("\n EvaluationReasonCode=" + eval.getEvaluationReasonCode());
+					bld.append("\n EvaluationStatus=" + eval.getEvaluationStatus());
+					bld.append("\n ReasonText=" + eval.getReasonCode());
+					bld.append("\n ForecastReason=" + eval.getReasonText());
+					bld.append("\n SeriesUsedCode=" + eval.getSeriesUsedCode());
+					bld.append("\n SeriesUsedText=" + eval.getSeriesUsedText());
+					bld.append("\n VaccineCvx=" + eval.getVaccineCvx());
+				}
 			} else {
 				log.debug("getEvaluationActualList was null");
 			}
 		}
 		return bld.toString();
 	}
-	
-//	public static java.lang.String parametersToString(Parameters p) {
-//		StringBuilder bld = new StringBuilder();
-//		bld.append("\n Id=" + p.getId());
-//		for(ParametersParameter pp :  p.getParameter()) {
-//			bld.append("\n name=" + pp.getName());
-//			for(ParametersParameter part :  pp.getPart()) {
-//			bld.append("\n  Id=" + part.getId());
-//			bld.append("\n  Date=" + part.getResource().getImmunization().getDate());
-//			bld.append("\n  =" + part.getResource().getImmunization(). ;
-//			bld.append("\n  =" + part ;
-//			bld.append("\n  =" + part ;
-//		}
-//		return bld.toString();
-//	}
+
+	// public static java.lang.String parametersToString(Parameters p) {
+	// StringBuilder bld = new StringBuilder();
+	// bld.append("\n Id=" + p.getId());
+	// for(ParametersParameter pp : p.getParameter()) {
+	// bld.append("\n name=" + pp.getName());
+	// for(ParametersParameter part : pp.getPart()) {
+	// bld.append("\n Id=" + part.getId());
+	// bld.append("\n Date=" + part.getResource().getImmunization().getDate());
+	// bld.append("\n =" + part.getResource().getImmunization(). ;
+	// bld.append("\n =" + part ;
+	// bld.append("\n =" + part ;
+	// }
+	// return bld.toString();
+	// }
 }

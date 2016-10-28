@@ -25,7 +25,7 @@ public class DeSerialize extends AbstractSerializeDeserialize {
 	}
 
 	public EObject it(String fileName) {
-		URL url = DeSerialize.class.getResource(fileName);
+		URL url = this.getClass().getResource(fileName);
 		resource = resourceSet.getResource(URI.createURI(url.toString()), true);
 		EObject eObject = (EObject) resource.getContents().get(0);
 

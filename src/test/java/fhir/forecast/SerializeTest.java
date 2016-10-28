@@ -21,9 +21,9 @@ public class SerializeTest {
 	Serialize seri = new Serialize();
 
 	@Test
-	public void testItJSON() {
+	public void testItPatientJSON() {
 		Patient sut = FhirFactory.eINSTANCE.createPatient();
-		XMLGregorianCalendar xgc = FHIRUtil.convertString2XMLCalendar(new java.lang.String("2010-02-03"));
+		XMLGregorianCalendar xgc = FHIRUtil.convert2XMLCalendar("2010-02-03");
 		Date birthDate = FhirFactory.eINSTANCE.createDate();
 		birthDate.setValue(xgc);
 		sut.setBirthDate(birthDate);
@@ -35,9 +35,9 @@ public class SerializeTest {
 	}
 	
 	@Test
-	public void testItXML() {
+	public void testItPatientXML() {
 		Patient sut = FhirFactory.eINSTANCE.createPatient();
-		XMLGregorianCalendar xgc = FHIRUtil.convertString2XMLCalendar(new java.lang.String("2010-02-03"));
+		XMLGregorianCalendar xgc = FHIRUtil.convert2XMLCalendar("2010-02-03");
 		Date birthDate = FhirFactory.eINSTANCE.createDate();
 		birthDate.setValue(xgc);
 		sut.setBirthDate(birthDate);
