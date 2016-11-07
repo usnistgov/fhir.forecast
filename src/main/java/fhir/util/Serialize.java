@@ -34,13 +34,15 @@ public class Serialize extends AbstractSerializeDeserialize {
 
 	public OutputStream it(EObject eObject, String uriString, OutputStream stream) {
 
-		resource = resourceSet.createResource(URI.createURI(uriString));
-		resource.getContents().add(eObject);
-
 		try {
+			resource = resourceSet.createResource(URI.createURI(uriString));
+			resource.getContents().add(eObject);
 			resource.save(stream, Collections.EMPTY_MAP);
 		} catch (IOException e) {
-			e.printStackTrace();
+			log.error("", e);
+		} catch(NullPointerException e) {
+			log.error(String.format("uriString=%s", uriString));
+			log.error(String.format("is not null: resource=%b, uriString=%b, eObject=%b", resource, uriString, eObject), e);
 		}
 		return stream;
 	}

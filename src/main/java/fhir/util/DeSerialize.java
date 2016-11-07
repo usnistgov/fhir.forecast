@@ -37,10 +37,8 @@ public class DeSerialize extends AbstractSerializeDeserialize {
 	}
 
 	public EObject it(InputStream reader, String sUri) {
-		URI uri = URI.createURI("xxx." + sUri);
-		log.error("it==> reader=" + reader + " uri=" + uri);
+		URI uri = URI.createURI(sUri);
 		try {
-			log.error("it==>" + resourceSet);
 			resource = resourceSet.createResource(uri);
 			resource.load(reader, Collections.EMPTY_MAP);
 			EList<EObject> eList = resource.getContents();

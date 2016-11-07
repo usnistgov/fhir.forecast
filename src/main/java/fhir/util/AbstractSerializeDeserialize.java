@@ -19,12 +19,12 @@ public abstract class AbstractSerializeDeserialize {
 	protected Resource resource;
 
 	protected AbstractSerializeDeserialize() {
-		log.trace("AbstractMarshaler==>" + resourceSet);
+		log.trace("AbstractSerializeDeserialize==>" + resourceSet);
 		FhirPackage.eINSTANCE.eClass();
 		XhtmlPackage.eINSTANCE.eClass();
 		resourceSet.getPackageRegistry().put(EcorePackage.eNS_URI, EcorePackage.eINSTANCE);
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("xml", new XMLResourceFactoryImpl());
 		resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap().put("json", new JsonResourceFactory());
-		log.trace("<==AbstractMarshaler");
+		log.trace("<==AbstractSerializeDeserialize");
 	}
 }
