@@ -45,7 +45,7 @@ public class ForecastUtil {
 
 	public enum FORECAST_PARAMETERs {
 
-		SERVICE_URL("serviceURL"), SERVICE_TYPE("serviceType"), ASSESMENT_DATE("assesmentDate"), BIRTH_DATE(
+		SERVICE_URL("serviceURL"), SERVICE_TYPE("serviceType"), ASSESMENT_DATE("assessmentDate"), BIRTH_DATE(
 				"birthDate"), GENDER("gender"), IMMUNIZATION("immunization"), IMMUNIZATIONS("immunizations");
 
 		public final java.lang.String code;
@@ -106,18 +106,40 @@ public class ForecastUtil {
 	}
 
 	public static ImmunizationRecommendationRecommendation createImmunizationRecommendationRecommendation(
-			ForecastActual i) {
+			ForecastActual i) {   
 		ImmunizationRecommendationRecommendation o = FhirFactory.eINSTANCE
 				.createImmunizationRecommendationRecommendation();
 		o.setId(FHIRUtil.createId().getValue());
 		o.setDate(FHIRUtil.convertDateTime(i.getDueDate()));
 		CodeableConcept code = FhirFactory.eINSTANCE.createCodeableConcept();
-		code.setText(FHIRUtil.convert(i.getVaccineCvx()));
-		o.setVaccineCode(code);
+		//code.setText(FHIRUtil.convert(i.getVaccineCvx()));
+                code.setText(FHIRUtil.convert(i.getVaccineGroup().getVaccineCvx()));
+                Coding coding = FhirFactory.eINSTANCE.createCoding();
+                Code c = FhirFactory.eINSTANCE.createCode();
+                c.setValue(i.getVaccineGroup().getVaccineCvx());
+                
+                coding.setCode(c);
+                code.getCoding().add(coding);
+		o.setVaccineCode(code);                
 		PositiveInt pi = FhirFactory.eINSTANCE.createPositiveInt();
-		pi.setValue(new BigInteger(i.getDoseNumber()));
+                
+                if(i.getDoseNumber() != null && !"".isEmpty())
+                    pi.setValue(new BigInteger(i.getDoseNumber()));
+           //     else if(i.getVaccineGroup(). != null)
+           //         pi.setValue(new BigInteger(i.getVaccineGroup().getEvaluationActualList().get(0).getDoseNumber()));
+
+       //         pi.setValue(new BigInteger("123"));
+       
+                CodeableConcept adminStatus = FhirFactory.eINSTANCE.createCodeableConcept();
+                Coding adminStatusCoding = FhirFactory.eINSTANCE.createCoding();
+                Code adminStatusCode = FhirFactory.eINSTANCE.createCode();
+                adminStatusCode.setValue(i.getAdminStatus());
+                adminStatusCoding.setCode(adminStatusCode);
+                adminStatus.getCoding().add(adminStatusCoding);
+                o.setForecastStatus(adminStatus);
+                             
 		o.setDoseNumber(pi);
-		CodeableConcept forecastStatus = FhirFactory.eINSTANCE.createCodeableConcept();
+		CodeableConcept forecastStatus = FhirFactory.eINSTANCE.createCodeableConcept();                
 		forecastStatus.getCoding().add(FHIRUtil.IMMUNIZATION_RECOMMENDATION_STATUS.DUE.coding);
 
 		ImmunizationRecommendationDateCriterion dueCriterion = createImmunizationRecommendationDateCriterion(
@@ -132,7 +154,7 @@ public class ForecastUtil {
 		ImmunizationRecommendationDateCriterion latestCriterion = createImmunizationRecommendationDateCriterion(
 				FHIRUtil.IMMUNIZATION_RECOMMENDATION_DATE_CRITERION.LATEST, i.getOverdueDate());
 		o.getDateCriterion().add(latestCriterion);
-
+ 
 		return (ImmunizationRecommendationRecommendation) o;
 	}
 
@@ -141,9 +163,19 @@ public class ForecastUtil {
 		ImmunizationRecommendationDateCriterion dateCriterion = FhirFactory.eINSTANCE
 				.createImmunizationRecommendationDateCriterion();
 		CodeableConcept forecastStatus = FhirFactory.eINSTANCE.createCodeableConcept();
-		forecastStatus.getCoding().add(crit.coding);
+                Coding coding = FhirFactory.eINSTANCE.createCoding();
+                //coding.setCode(crit.coding.getCode());
+                Code code = FhirFactory.eINSTANCE.createCode();
+                code.setValue(crit.coding.getCode().getValue());                
+                coding.setCode(code);
+		//forecastStatus.getCoding().add(crit.coding);                
+                forecastStatus.getCoding().add(coding);
+//               forecastStatus.getCoding().add(crit);
+              //  forecastStatus.setText(FHIRUtil.convert(crit.coding.getCode().getValue()));
+             //   forecastStatus.setId(crit.name() + " " + crit.toString());
 		dateCriterion.setCode(forecastStatus);
 		dateCriterion.setValue(FHIRUtil.convertDateTime(date));
+                       
 		return dateCriterion;
 	}
 
