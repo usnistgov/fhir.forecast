@@ -31,7 +31,16 @@ public class DeSerialize extends AbstractSerializeDeserialize {
 
 		return eObject;
 	}
+        
+        
+	public EObject it(URL url) {
+		
+		resource = resourceSet.getResource(URI.createURI(url.toString()), true);
+		EObject eObject = (EObject) resource.getContents().get(0);
 
+		return eObject;
+	}        
+        
 	public EObject it(StringReader reader, String sUri) {
 		return it(new ReaderInputStream(reader), sUri);
 	}
@@ -40,7 +49,7 @@ public class DeSerialize extends AbstractSerializeDeserialize {
 		URI uri = URI.createURI(sUri);
 		try {
 			resource = resourceSet.createResource(uri);
-			resource.load(reader, Collections.EMPTY_MAP);
+			resource.load(reader, Collections.EMPTY_MAP);                        
 			EList<EObject> eList = resource.getContents();
 			if (eList.size() > 0) {
 				EObject eObject = (EObject) resource.getContents().get(0);

@@ -123,8 +123,9 @@ public abstract class FHIRUtil {
 			this.bool.setValue(bool);
 		}
 	}
-
+                
 	public static final SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'hh:mm:ss");
+        public static final SimpleDateFormat sdfShort = new SimpleDateFormat("yyyy-MM-dd");
 
 	public static Instant createInstant(java.util.Date date) {
 		Instant instant = FhirFactory.eINSTANCE.createInstant();
@@ -158,8 +159,9 @@ public abstract class FHIRUtil {
 	}
 
 	public static Identifier createIdentifier() {
-		Identifier identifier = FhirFactory.eINSTANCE.createIdentifier();
-		identifier.setId(createUuid().toString());
+		Identifier identifier = FhirFactory.eINSTANCE.createIdentifier();                
+		//identifier.setId(createUuid().toString());                
+                identifier.setId(createUuid().getValue());
 		identifier.setValue(createUuid());
 		return identifier;
 	}
@@ -210,6 +212,8 @@ public abstract class FHIRUtil {
 	}
 
 	public static java.util.Date convert(org.hl7.fhir.Date i) throws ParseException {
+                if(i.getValue().toString().length() == 10)
+                    return  sdfShort.parse(i.getValue().toString());
 		return sdf.parse(i.getValue().toString());
 	}
 
